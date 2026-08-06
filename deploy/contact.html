@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="locale.js"></script>
+
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+
+  <script type="text/babel">
+
+const Field = ({ label, placeholder, select, textarea, options, half, name, value, onChange, required }) => {
+  const [focus, setFocus] = React.useState(false);
+  const wrap = {
+    borderRadius: 14, border: '1px solid ' + (focus ? 'rgba(110,216,255,0.42)' : 'rgba(110,216,255,0.12)'),
+    background: 'rgba(255,255,255,0.04)', padding: '12px 16px',
+    transition: 'all 220ms',
+    boxShadow: focus ? '0 0 24px rgba(24,183,255,0.18)' : 'none'
+  };
+  const labelStyle = { display: 'block', fontFamily: 'var(--ko-font-display)', fontSize: 10.5, fontWeight: 900, letterSpacing: '0.18em', textTransform: 'uppercase', color: focus ? '#6ED8FF' : 'rgba(110,216,255,0.55)', transition: 'color 220ms' };
+  const inputStyle = { width: '100%', background: 'transparent', border: 'none', outline: 'none', color: '#fff', fontFamily: 'var(--ko-font-body)', fontSize: 14.5, padding: '4px 0 0' };
+  return (
+    <label style={wrap}>
+          <span style={labelStyle}>{label}</span>
+          {textarea ?
+      <textarea name={name} required={required} rows={5} placeholder={placeholder} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} style={{ ...inputStyle, resize: 'vertical' }} /> :
+      select ?
+      <select name={name} value={value} onChange={onChange} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} style={{ ...inputStyle, appearance: 'none' }}>{options.map((o) => <option key={o} style={{ background: '#04111F' }}>{o}</option>)}</select> :
+      <input name={name} required={required} placeholder={placeholder} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} style={inputStyle} />}
+        </label>);
+
+};
+
+const INQUIRY_EMAIL = {
+  'Inquiry': 'info@klimaoptima.com',
+  'Sales': 'sales@klimaoptima.com',
+  'Technical Support': 'support@klimaoptima.com',
+  'Service and Maintenance': 'support@klimaoptima.com',
+};
+
+const App = () => {
+  const [submitted, setSubmitted] = React.useState(
+    typeof window !== 'undefined' && /[?&]sent=1/.test(window.location.search)
+  );
+  const [inquiry, setInquiry] = React.useState('Inquiry');
+  const [loc, setLoc] = React.useState(function () {
+    return (typeof window !== 'undefined' && window.KO_LOCALE) ? window.KO_LOCALE.current() : null;
+  });
+  React.useEffect(function () {
+    if (typeof window === 'undefined' || !window.KO_LOCALE) return;
+    const f = function () { setLoc(window.KO_LOCALE.current()); };
+    window.addEventListener('ko-locale-change', f);
+    return function () { window.removeEventListener('ko-locale-change', f); };
+  }, []);
+  const dist = loc ? loc.region.distributor : {
+    salesPhone: '+63 2 7956-5555', salesTel: 'tel:+6327956555',
+    email: 'sales@klimaoptima.com', support: 'support@klimaoptima.com',
+    mobile: '+63 (917) 623-4621', mobileTel: 'tel:+639176234621',
+    address: '2904-B Tektite West Tower, Philippine Stock Exchange Centre, Exchange Road, Ortigas Center, Pasig City, Philippines 1605'
+  };
+  const nextUrl = (typeof window !== 'undefined')
+    ? window.location.origin + window.location.pathname + '?sent=1'
+    : '';
+  return (
+    <Page active="" footerCta={false}>
+          <PageHero
+        crumbs={[{ label: 'Home', href: 'Klima Optima Homepage.html' }, { label: 'Contact' }]}
+        eyebrow="Contact Klima Optima"
+        headline="Let's Talk About"
+        headlineHighlight="Your Climate."
+        sub="Site surveys, sizing reports, BMS integration, and service contracts, start the conversation and a specialist will reply within one business day." />
+      
+
+          {/* Contact form + offices */}
+          <SectionBand shade={1}>
+            <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 1fr', gap: 56, alignItems: 'flex-start' }}>
+              <Reveal>
+                <GlassCard padding={40}>
+                  <div style={{ fontFamily: 'var(--ko-font-display)', fontSize: 11, fontWeight: 900, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#6ED8FF' }}>Inquiry Form</div>
+                  <h3 style={{ margin: '12px 0 0', fontFamily: 'var(--ko-font-display)', fontWeight: 900, fontSize: 32, color: '#fff', letterSpacing: '-0.01em' }}>Start a project conversation</h3>
+                  <p style={{ marginTop: 12, color: 'rgba(255,255,255,0.66)', fontSize: 15, lineHeight: 1.6 }}>The more we know up front, the more useful the first call is. All fields encrypted; never shared.</p>
+
+                  {!submitted ?
+              <form action={`https://formsubmit.co/${INQUIRY_EMAIL[inquiry]}`} method="POST" encType="multipart/form-data" style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                      <input type="hidden" name="_subject" value={`New ${inquiry} inquiry, Klima Optima`} />
+                      <input type="hidden" name="_template" value="table" />
+                      <input type="hidden" name="_captcha" value="false" />
+                      <input type="hidden" name="_next" value={nextUrl} />
+                      <div className="contact-field-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                        <Field name="Company" label="Company" placeholder="Acme Manufacturing" />
+                        <Field name="Name" required label="Your name" placeholder="Maria Cruz" />
+                      </div>
+                      <div className="contact-field-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+                        <Field name="Email" required label="Email" placeholder="maria@acme.com" />
+                        <Field name="Phone" label="Phone" placeholder="+63 ___ ____" />
+                      </div>
+                      <Field name="Inquiry type" label="Inquiry type" select value={inquiry} onChange={(e) => setInquiry(e.target.value)} options={['Inquiry', 'Sales', 'Technical Support', 'Service and Maintenance']} />
+                      <Field name="Industry" label="Industry" placeholder="e.g. Healthcare, Manufacturing, Cold Storage" />
+                      <Field name="Message" label="Tell us about your project" textarea placeholder="What space are you climate-controlling, what's the operational tolerance, and what's the timeline?" />
+                      <button type="submit" className="ko-btn ko-btn-primary" style={{ marginTop: 12, justifyContent: 'center' }}>
+                        Submit Inquiry <Icon name="arrow-right" size={18} />
+                      </button>
+                    </form> :
+
+              <div style={{ marginTop: 32, padding: 32, borderRadius: 22, border: '1px solid rgba(110,216,255,0.30)', background: 'rgba(24,183,255,0.08)', textAlign: 'center' }}>
+                      <div style={{ width: 64, height: 64, borderRadius: '50%', background: '#18B7FF', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#04111F', boxShadow: '0 0 40px rgba(24,183,255,0.55)' }}>
+                        <Icon name="check" size={32} />
+                      </div>
+                      <h4 style={{ margin: '16px 0 0', fontFamily: 'var(--ko-font-display)', fontWeight: 900, fontSize: 22, color: '#fff' }}>Inquiry received.</h4>
+                      <p style={{ marginTop: 8, color: 'rgba(255,255,255,0.66)', fontSize: 15 }}>A specialist will reach out within one business day.</p>
+                      <button onClick={() => setSubmitted(false)} style={{ marginTop: 20, padding: '10px 24px', borderRadius: 9999, background: 'transparent', color: '#6ED8FF', border: '1px solid rgba(110,216,255,0.30)', cursor: 'pointer', fontFamily: 'var(--ko-font-display)', fontWeight: 700, fontSize: 13 }}>Submit another</button>
+                    </div>
+              }
+                </GlassCard>
+              </Reveal>
+
+              <Reveal>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+                  {[
+              { icon: 'support', label: 'Sales', main: dist.salesPhone, sub: 'For Purchase and Project Inquiries', href: dist.salesTel },
+              { icon: 'globe', label: 'Email', main: dist.email, sub: 'For Purchase and Project Inquiries', href: 'mailto:' + dist.email },
+              { icon: 'shield', label: 'Technical Support', main: dist.support, sub: 'For Support and Service Inquiries', href: 'mailto:' + dist.support },
+              { icon: 'building', label: 'Mobile', main: dist.mobile, sub: 'For Purchase and Project Inquiries', href: dist.mobileTel }].
+              map((c) =>
+              <a key={c.label} href={c.href || '#'} style={{ textDecoration: 'none', display: 'block' }}>
+                      <ContactCard {...c} />
+                    </a>
+              )}
+                  
+                  {/* Office Address Card */}
+                  <GlassCard padding={22}>
+                    <div style={{display:'flex', gap: 18, alignItems:'flex-start'}}>
+                      <div style={{flexShrink: 0, width: 56, height: 56, borderRadius: 16, background:'rgba(24,183,255,0.10)', color:'#6ED8FF', display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(110,216,255,0.18)'}}>
+                        <Icon name="building" size={24}/>
+                      </div>
+                      <div style={{flex: 1, minWidth: 0}}>
+                        <div style={{fontFamily:'var(--ko-font-display)', fontSize: 11, fontWeight: 900, letterSpacing:'0.22em', textTransform:'uppercase', color:'#6ED8FF'}}>Office Address</div>
+                        <div style={{marginTop: 8, fontSize: 14, color:'rgba(255,255,255,0.78)', lineHeight: 1.65}}>
+                          {dist.address}
+                        </div>
+                      </div>
+                    </div>
+                  </GlassCard>
+                </div>
+              </Reveal>
+            </div>
+          </SectionBand>
+        </Page>);
+
+};
+
+const ContactCard = ({ icon, label, main, sub }) => {
+  const [hov, setHov] = React.useState(false);
+  return (
+    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{
+      display: 'flex', gap: 18, alignItems: 'center', padding: 22,
+      borderRadius: 22,
+      border: '1px solid ' + (hov ? 'rgba(110,216,255,0.32)' : 'rgba(110,216,255,0.12)'),
+      background: hov ? 'rgba(24,183,255,0.07)' : 'rgba(255,255,255,0.035)',
+      backdropFilter: 'blur(20px)',
+      transition: 'all 220ms'
+    }}>
+          <div style={{ flexShrink: 0, width: 56, height: 56, borderRadius: 16, background: hov ? '#18B7FF' : 'rgba(24,183,255,0.10)', color: hov ? '#04111F' : '#6ED8FF', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: hov ? '0 0 28px rgba(24,183,255,0.45)' : '0 0 18px rgba(24,183,255,0.12)', border: '1px solid rgba(110,216,255,0.18)', transition: 'all 220ms' }}>
+            <Icon name={icon} size={24} />
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontFamily: 'var(--ko-font-display)', fontSize: 11, fontWeight: 900, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#6ED8FF' }}>{label}</div>
+            <div style={{ marginTop: 4, fontFamily: 'var(--ko-font-display)', fontWeight: 800, fontSize: 19, color: '#fff', letterSpacing: '-0.01em' }}>{main}</div>
+            <div style={{ marginTop: 4, fontSize: 13, color: 'rgba(255,255,255,0.58)' }}>{sub}</div>
+          </div>
+          <span style={{ color: hov ? '#9EEBFF' : 'rgba(110,216,255,0.40)', transition: 'all 220ms', transform: hov ? 'translateX(2px)' : 'none' }}>
+            <Icon name="arrow-right" size={20} />
+          </span>
+        </div>);
+
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<style>
+  /* Mobile: collapse the contact form's two-column grids to single column */
+  .contact-grid > *, .contact-field-row > * { min-width: 0; }
+  @media (max-width: 860px) {
+    .contact-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  }
+  @media (max-width: 560px) {
+    .contact-field-row { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+
+<script src="security.js"></script>
+<script src="contact-form-guard.js"></script>
+</body>
+</html>

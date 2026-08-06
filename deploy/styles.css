@@ -1,0 +1,338 @@
+/* ============================================================
+   KLIMA OPTIMA — WEBSITE UI KIT
+   Shared utilities + component-scoped styles.
+   ============================================================ */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--ko-midnight);
+  color: var(--ko-fg-primary);
+  font-family: var(--ko-font-body);
+  overflow-x: hidden;
+}
+
+/* Layout container */
+.ko-container { max-width: var(--ko-container); margin: 0 auto; padding: 0 var(--ko-gutter); }
+
+/* Tech grid overlay — used over hero / dark sections */
+.ko-tech-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: var(--ko-grad-grid);
+  background-size: 86px 86px;
+  opacity: 0.16;
+  mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, transparent 80%);
+}
+
+.ko-spotlight {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(24,183,255,0.28), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(14,78,138,0.45), transparent 34%);
+}
+
+.ko-glass {
+  background: var(--ko-glass-2);
+  backdrop-filter: var(--ko-blur-glass-md);
+  -webkit-backdrop-filter: var(--ko-blur-glass-md);
+  border: 1px solid var(--ko-line-2);
+}
+
+/* Hide scrollbar on demo iframe */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* Reusable button — primary */
+.ko-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 26px;
+  border-radius: var(--ko-radius-pill);
+  font-family: var(--ko-font-display);
+  font-weight: 700;
+  font-size: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--ko-dur-base) var(--ko-ease-out);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ko-btn-primary {
+  background: var(--ko-grad-cta);
+  color: #fff;
+  box-shadow: var(--ko-glow-cyan-lg);
+}
+.ko-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 60px rgba(24,183,255,0.55); }
+.ko-btn-secondary {
+  background: var(--ko-glass-3);
+  backdrop-filter: var(--ko-blur-glass-md);
+  border-color: var(--ko-line-2);
+  color: #fff;
+}
+.ko-btn-secondary:hover { background: var(--ko-glass-4); }
+
+.ko-icon-btn-arrow {
+  width: 16px; height: 16px;
+}
+
+/* ============================================================
+   Shared page animations + reveal-on-scroll (used on every page)
+   ============================================================ */
+@keyframes ko-fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes ko-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ko-float   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes ko-pulse   { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+@keyframes ko-shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+.ko-fade-up { animation: ko-fade-up 700ms cubic-bezier(0.22,1,0.36,1) both; }
+.ko-fade-in { animation: ko-fade-in 900ms cubic-bezier(0.22,1,0.36,1) both; }
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 800ms cubic-bezier(0.22,1,0.36,1), transform 800ms cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+[data-reveal].in { opacity: 1 !important; transform: translateY(0) !important; }
+
+html { scroll-behavior: smooth; }
+.ko-hero-float       { animation: ko-float 6s ease-in-out infinite; }
+.ko-hero-float-slow  { animation: ko-float 8s ease-in-out infinite; animation-delay: -2s; }
+
+
+/* Section heading rhythm */
+.ko-section {
+  position: relative;
+  padding: var(--ko-section) var(--ko-gutter);
+  overflow: hidden;
+}
+.ko-eyebrow {
+  font-family: var(--ko-font-display);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: var(--ko-track-label);
+  text-transform: uppercase;
+  color: var(--ko-cyan-ice);
+}
+.ko-section-title {
+  margin: 14px 0 0;
+  font-family: var(--ko-font-display);
+  font-weight: 900;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.ko-section-sub {
+  margin: 18px auto 0;
+  max-width: 700px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ko-fg-secondary);
+}
+
+/* ============================================================
+   RESPONSIVE UTILITIES
+   ============================================================ */
+
+/* Mobile-first responsive grid helpers */
+.ko-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--ko-space-5); }
+.ko-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--ko-space-5); }
+.ko-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--ko-space-5); }
+
+@media (max-width: 1024px) {
+  .ko-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .ko-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .ko-section { padding: 72px 32px; }
+  .ko-container { padding: 0 32px; }
+}
+
+@media (max-width: 768px) {
+  .ko-grid-4,
+  .ko-grid-3,
+  .ko-grid-2 { grid-template-columns: 1fr; gap: var(--ko-space-4); }
+  .ko-section { padding: 56px 20px; }
+  .ko-container { padding: 0 20px; }
+  .ko-section-title { font-size: 2rem; }
+  .ko-btn { width: 100%; justify-content: center; }
+}
+
+/* Touch-friendly tap targets */
+@media (max-width: 768px) {
+  .ko-btn,
+  button,
+  a[role="button"] {
+    min-height: 44px;
+    padding: 14px 24px;
+  }
+}
+
+/* Reduce motion for accessibility and mobile performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   SITE-WIDE MOBILE OPTIMIZATION
+   Pages use inline-styled grids inside <SectionBand class="ko-band">.
+   Inline styles can't be hit by plain rules, so these use !important,
+   scoped to content bands + page-hero inner so header/footer are safe.
+   ============================================================ */
+
+/* Tablet: trim the generous band padding */
+@media (max-width: 1024px) {
+  .ko-band {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Tighter band padding on phones */
+  .ko-band {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Collapse every inline multi-column grid in page content to one column.
+     Scoped to <section> so <header>/<footer> internals are untouched. */
+  section [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Footer's multi-column link grid → two columns on phones */
+  footer [style*="grid-template-columns"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px !important;
+  }
+  footer { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Button rows (inline flex groups containing a .ko-btn) stack instead of overflowing */
+  section div:has(> .ko-btn) {
+    flex-wrap: wrap !important;
+  }
+
+  /* Wide comparison tables scroll horizontally inside their card;
+     nowrap lets narrow spec tables still fit without forced scrolling */
+  section div:has(> table) {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  section table { white-space: nowrap; }
+
+  /* Oversized fixed-width media never breaks the viewport */
+  section image-slot {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  section img { max-width: 100%; }
+
+  /* Custom hero sections (product/solution detail) — match the slimmer mobile
+     header so the gap to content stays proportionate */
+  section[style*="padding-top: 164px"] {
+    padding-top: 120px !important;
+  }
+
+  /* ---- Product showcase blocks (image | text panels) on mobile ----
+     Targets the 2-column grid that is itself the bordered card
+     (has overflow:hidden) — feature-card grids don't match. */
+  section [style*="grid-template-columns"][style*="overflow: hidden"] {
+    min-height: auto !important;
+  }
+  /* Reset CSS order so the product PHOTO (first in DOM) is always on top,
+     and trim the oversized cell padding that opened the gap */
+  section [style*="grid-template-columns"][style*="overflow: hidden"] > div {
+    order: 0 !important;
+    padding: 28px 22px !important;
+  }
+  /* Photo cell: pull the photo down toward the details below it */
+  section [style*="grid-template-columns"][style*="overflow: hidden"] > div:first-child {
+    padding-top: 24px !important;
+    padding-bottom: 4px !important;
+  }
+  /* Shrink the tall 400px photo box so there's no empty space under the unit */
+  section [style*="grid-template-columns"][style*="overflow: hidden"] > div:first-child image-slot {
+    height: 300px !important;
+    min-height: 300px !important;
+  }
+  section [style*="grid-template-columns"][style*="overflow: hidden"] > div:first-child [style*="min-height: 400px"] {
+    min-height: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Footer fully stacks on very small screens */
+  footer [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* ============================================================
+   MOBILE PASS 2 — tablet tier, dense cards, stat scaling
+   ============================================================ */
+
+/* Tablet: 3 and 4 column content grids drop to 2 before collapsing */
+@media (min-width: 769px) and (max-width: 1024px) {
+  section [style*="repeat(4,1fr)"],
+  section [style*="repeat(4, 1fr)"],
+  section [style*="repeat(3,1fr)"],
+  section [style*="repeat(3, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Two-column text + panel layouts stack early to keep line length sane */
+  section [style*="1.1fr"],
+  section [style*="0.9fr 1.1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Generous desktop card padding is wasteful on phones */
+  section [style*="padding: 40px"],
+  section [style*="padding: 36px"],
+  section [style*="padding: 34px"] {
+    padding: 24px !important;
+  }
+  section [style*="padding:'40px 48px'"],
+  section [style*="padding: '40px 48px'"],
+  section [style*="padding: 40px 48px"],
+  section [style*="padding: 36px 40px"],
+  section [style*="padding: 56px 48px"],
+  section [style*="padding: 12px 56px 56px"],
+  section [style*="padding: 56px 56px"] {
+    padding: 26px 20px !important;
+  }
+
+  /* Stat numbers never overflow their card */
+  section [style*="font-size: 48px"],
+  section [style*="fontSize: 48"] {
+    font-size: 34px !important;
+  }
+
+  /* Large radii look oversized at phone widths */
+  section [style*="border-radius: 40px"] { border-radius: 26px !important; }
+
+  /* Section gaps tighten */
+  section [style*="margin-top: 56px"] { margin-top: 32px !important; }
+  section [style*="gap: 80px"], section [style*="gap: 64px"] { gap: 32px !important; }
+
+  /* Hero CTA row: full-width stacked buttons read better than wrapped pills */
+  .ko-page-hero .ko-btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  /* Chips and tags wrap tighter */
+  section [style*="gap: 12px"] { gap: 8px !important; }
+  /* Fixed-height media boxes shrink with the viewport */
+  section image-slot[style*="height: 360px"],
+  section image-slot[style*="height:360px"] { height: 220px !important; }
+}

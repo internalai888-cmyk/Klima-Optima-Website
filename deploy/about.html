@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .ko-climate-row{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .ko-two{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center}
+  .ko-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  .ko-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ko-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:1024px){.ko-climate-row{grid-template-columns:repeat(3,1fr)}.ko-steps{grid-template-columns:repeat(3,1fr)}.ko-two{grid-template-columns:1fr;gap:40px}.ko-grid-3{grid-template-columns:repeat(2,1fr)}.ko-grid-4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:640px){.ko-climate-row{grid-template-columns:repeat(2,1fr)}.ko-steps{grid-template-columns:1fr}.ko-grid-3,.ko-grid-4{grid-template-columns:1fr}}
+  a{color:#6ED8FF}a:hover{color:#9EEBFF}
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+
+  <script type="text/babel">
+
+    const CLIMATE_FACTORS = [
+      ['sun','Heat'],['gauge','Temperature'],['droplet','Humidity'],
+      ['water','Rain'],['wind','Wind'],['zap','Extreme Weather'],
+    ];
+
+    const PROTECT = [
+      ['shield','Protect People','Heat stress reduces physical and mental performance long before it becomes a medical event. Conditioned, moving air keeps occupied spaces workable through heat peaks and holds exposure inside safe limits.'],
+      ['gauge','Protect Processes','Temperature and humidity drift shows up as defects, spoilage, and stalled lines. Close control holds process conditions steady so output stays inside specification all year.'],
+      ['factory','Protect Assets','Moisture is the slowest and most expensive form of damage. Managed relative humidity prevents condensation, corrosion, and microbial growth in the building and everything stored in it.'],
+    ];
+
+    const HEAT_EFFECTS = [
+      ['gauge','Reduced Focus','Harder to think clearly and stay alert as core temperature climbs.'],
+      ['zap','Fatigue and Weakness','Less energy, more slowdowns, longer recovery between tasks.'],
+      ['shield','More Mistakes','Impaired judgment increases error rates and safety incidents.'],
+      ['droplet','Dehydration','Dizziness, nausea, and heavy sweating signal heat exhaustion.'],
+      ['cross','Heat Stroke Risk','Life-threatening without immediate cooling and care.'],
+    ];
+
+    const HEAT_STEPS = [
+      ['Portable Air Conditioning','Deliver targeted cooling exactly where the work happens.'],
+      ['Improve Ventilation','Increase airflow with fans, exhaust, and fresh-air movement.'],
+      ['Hydration','Provide cool drinking water and encourage regular intake.'],
+      ['Roofing Insulation','Reduce heat gain into the building envelope.'],
+      ['Clothing and Monitoring','Breathable gear, and watch for early signs of heat stress.'],
+    ];
+
+    const HUMIDITY_RISKS = [
+      'Mold and microbial growth','Accelerated corrosion','Damaged inventory','Product spoilage',
+      'Degraded equipment','Reduced occupant comfort','Rising maintenance costs','Operational delays',
+    ];
+
+    const HUMIDITY_ACTIONS = [
+      ['gauge','Monitor RH Levels','Measure relative humidity continuously, not occasionally, so drift is caught before damage.'],
+      ['droplet','Dehumidify to Target','Commercial and industrial dehumidification sized to the moisture load, not the floor area.'],
+      ['wind','Improve Ventilation','Manage air movement and exchange so moisture is not left to settle.'],
+      ['shield','Seal Ingress','Close the leaks, gaps, and envelope failures that pull damp air inside.'],
+    ];
+
+    const SYSTEMS = [
+      ['droplet','Control Relative Humidity','Prevent condensation, corrosion, and microbial growth across enclosed and process spaces.'],
+      ['gauge','Maintain Stable Temperature','Hold target ranges through load swings, occupancy changes, and outdoor heat peaks.'],
+      ['factory','Reduce Equipment Failures','Limit overheating, breakdowns, and process instability in continuously running plant.'],
+      ['snowflake','Hold Ambient Conditions','Keep suitable indoor conditions year-round for product consistency.'],
+      ['shield','Support Comfort and Energy','Improve occupant comfort while optimizing energy use across the system.'],
+      ['support','Sustain Uptime','Commissioning, preventive maintenance, and rapid response keep systems in specification.'],
+    ];
+
+    const ESSENTIAL_IN = [
+      'Healthcare imaging and diagnostics','Laboratories and clean environments','Manufacturing and process facilities',
+      'Data centers and mission-critical spaces','Food processing','Cold storage, warehousing, and logistics',
+    ];
+
+    const TEAM = [
+      ['gauge','Engineering','Project sizing, load calculations, redundancy planning, and system integration.'],
+      ['factory','Operations','Deployment, on-site commissioning, and logistics across markets.'],
+      ['support','Service','Round-the-clock technical response and scheduled maintenance.'],
+      ['shield','Consulting','Site surveys, risk assessment, and retrofit advisory.'],
+    ];
+
+    const ChipCard = ({icon, label}) => {
+      const [hov, setHov] = React.useState(false);
+      return (
+        <div onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
+          style={{display:'flex', flexDirection:'column', alignItems:'center', gap:14, padding:'26px 14px',
+            borderRadius:24, border:'1px solid '+(hov?'rgba(110,216,255,0.30)':'rgba(110,216,255,0.12)'),
+            background:'rgba(255,255,255,0.045)', backdropFilter:'blur(20px)',
+            boxShadow:hov?'0 24px 90px rgba(0,0,0,0.36), 0 0 40px rgba(24,183,255,0.10)':'0 24px 90px rgba(0,0,0,0.36)',
+            transform:hov?'translateY(-5px)':'none', transition:'all 240ms cubic-bezier(0.22,1,0.36,1)'}}>
+          <div style={{width:52, height:52, borderRadius:16, background:hov?'#18B7FF':'rgba(24,183,255,0.10)',
+            color:hov?'#04111F':'#6ED8FF', display:'flex', alignItems:'center', justifyContent:'center',
+            border:'1px solid rgba(110,216,255,0.18)', boxShadow:hov?'0 0 28px rgba(24,183,255,0.35)':'0 0 28px rgba(24,183,255,0.18)', transition:'all 240ms'}}>
+            <Icon name={icon} size={24}/>
+          </div>
+          <div style={{fontFamily:'var(--ko-font-display)', fontWeight:800, fontSize:14, color:'#fff', letterSpacing:'0.01em', textAlign:'center'}}>{label}</div>
+        </div>);
+    };
+
+    const StepCard = ({n, title, copy}) => {
+      const [hov, setHov] = React.useState(false);
+      return (
+        <div onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
+          style={{position:'relative', padding:'28px 24px 26px', borderRadius:24, overflow:'hidden',
+            border:'1px solid '+(hov?'rgba(110,216,255,0.30)':'rgba(110,216,255,0.12)'),
+            background:'rgba(255,255,255,0.045)', backdropFilter:'blur(20px)',
+            boxShadow:'0 24px 90px rgba(0,0,0,0.36)', transform:hov?'translateY(-4px)':'none',
+            transition:'all 240ms cubic-bezier(0.22,1,0.36,1)'}}>
+          <div style={{position:'absolute', top:-30, right:-30, width:160, height:160, background:'radial-gradient(circle, rgba(24,183,255,0.18), transparent 60%)', pointerEvents:'none', opacity:hov?1:0.55, transition:'opacity 240ms'}}/>
+          <div style={{position:'relative', fontFamily:'var(--ko-font-display)', fontWeight:900, fontSize:34,
+            background:'linear-gradient(90deg, #18B7FF, #9EEBFF)', WebkitBackgroundClip:'text', backgroundClip:'text', color:'transparent', lineHeight:1}}>{n}</div>
+          <div style={{position:'relative', marginTop:16, fontFamily:'var(--ko-font-display)', fontWeight:800, fontSize:16, color:'#fff', letterSpacing:'-0.01em', lineHeight:1.25}}>{title}</div>
+          <p style={{position:'relative', margin:'10px 0 0', fontSize:13.5, color:'rgba(255,255,255,0.62)', lineHeight:1.6}}>{copy}</p>
+        </div>);
+    };
+
+    const App = () => (
+      <Page active="">
+        <PageHero
+          crumbs={[{label:'Home', href:'Klima Optima Homepage.html'},{label:'About us'}]}
+          eyebrow="About Klima Optima"
+          headline="Climate-Proofing"
+          headlineHighlight="Your Business."
+          sub="Preparing today for the realities of a warmer, more humid tomorrow. We engineer environments that hold their condition while the climate outside them does not."
+          ctas={<>
+            <a href="contact.html" className="ko-btn ko-btn-primary" style={{textDecoration:'none'}}>Request Consultation <Icon name="arrow-right" size={18}/></a>
+            <a href="#approach" className="ko-btn ko-btn-secondary" style={{textDecoration:'none'}}>Our Approach</a>
+          </>}
+        />
+
+        {/* The climate reality */}
+        <SectionBand shade={1} id="approach">
+          <Reveal>
+            <div className="ko-two">
+              <div>
+                <SectionHead align="left"
+                  eyebrow="The Operating Reality"
+                  title="A warmer, more humid"
+                  titleHighlight="tomorrow." />
+                <div style={{marginTop:28, display:'flex', flexDirection:'column', gap:20, maxWidth:620}}>
+                  <p style={{margin:0, fontSize:16.5, lineHeight:1.7, color:'rgba(255,255,255,0.76)'}}>Rising temperatures and increased humidity are no longer future risks. They are already affecting productivity, equipment reliability, product quality, and indoor comfort.</p>
+                  <p style={{margin:0, fontSize:16.5, lineHeight:1.7, color:'rgba(255,255,255,0.76)'}}>We partner with businesses to strengthen their facilities with resilient cooling and humidity control strategies that protect people, processes, and assets from heat stress, moisture damage, and operational downtime.</p>
+                  <p style={{margin:0, fontSize:16.5, lineHeight:1.7, color:'rgba(255,255,255,0.76)'}}>By designing environments that adapt to extreme weather and long-term climate shifts, businesses do not merely survive climate change. They stay compliant, efficient, and competitive in the years ahead.</p>
+                </div>
+                <div style={{marginTop:32, display:'flex', gap:10, flexWrap:'wrap'}}>
+                  <Tag>Engineering-led</Tag>
+                  <Tag>Operationally proven</Tag>
+                  <Tag>Climate-resilient</Tag>
+                </div>
+              </div>
+              <GlassCard padding={40}>
+                <div style={{fontFamily:'var(--ko-font-display)', fontSize:12, fontWeight:900, letterSpacing:'0.22em', textTransform:'uppercase', color:'#6ED8FF'}}>What We Design Against</div>
+                <div className="ko-climate-row" style={{marginTop:26, gridTemplateColumns:'repeat(3,1fr)'}}>
+                  {CLIMATE_FACTORS.map(([ic,l]) => <ChipCard key={l} icon={ic} label={l}/>)}
+                </div>
+                <p style={{margin:'26px 0 0', fontSize:14, color:'rgba(255,255,255,0.58)', lineHeight:1.6}}>Every specification starts with the conditions a site actually faces, then works back to the equipment, capacity, and control strategy that will hold through them.</p>
+              </GlassCard>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* People, processes, properties */}
+        <SectionBand shade={0}>
+          <Reveal>
+            <SectionHead align="center"
+              eyebrow="Our Mandate"
+              title="Protect People, Processes,"
+              titleHighlight="and Assets."
+              sub="Three exposures, one climate strategy. Each is measured, specified, and held to a target." />
+            <div className="ko-grid-3" style={{marginTop:56}}>
+              {PROTECT.map(([ic,t,c]) => (
+                <GlassCard key={t} padding={34}>
+                  <div style={{width:56, height:56, borderRadius:18, background:'rgba(24,183,255,0.10)', color:'#6ED8FF', display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(110,216,255,0.18)', boxShadow:'0 0 28px rgba(24,183,255,0.18)'}}>
+                    <Icon name={ic} size={26}/>
+                  </div>
+                  <h3 style={{margin:'24px 0 0', fontFamily:'var(--ko-font-display)', fontWeight:900, fontSize:24, color:'#fff', letterSpacing:'-0.015em', lineHeight:1.1}}>{t}</h3>
+                  <p style={{margin:'14px 0 0', fontSize:15, color:'rgba(255,255,255,0.66)', lineHeight:1.65}}>{c}</p>
+                </GlassCard>
+              ))}
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Heat stress */}
+        <SectionBand shade={2}>
+          <Reveal>
+            <SectionHead align="center"
+              eyebrow="Heat Stress"
+              title="Hotter conditions."
+              titleHighlight="Higher risks."
+              sub="Heat stress occurs when the body cannot shed heat fast enough, and high humidity makes it worse by suppressing evaporative cooling. Outdoor and non-air-conditioned workplaces carry the highest exposure." />
+            <div className="ko-grid-3" style={{marginTop:56}}>
+              {HEAT_EFFECTS.map(([ic,t,c]) => <FeatureCard key={t} icon={ic} title={t} copy={c}/>)}
+              <GlassCard padding={30}>
+                <div style={{fontFamily:'var(--ko-font-display)', fontSize:12, fontWeight:900, letterSpacing:'0.22em', textTransform:'uppercase', color:'#6ED8FF'}}>The Business Exposure</div>
+                <p style={{margin:'18px 0 0', fontSize:14.5, color:'rgba(255,255,255,0.7)', lineHeight:1.65}}>Reduced performance means fatigue, lower productivity, and higher rates of error or accident. Beyond output, it exposes the business to regulatory and safety liability. Traditional measures alone no longer hold as heat indices climb.</p>
+              </GlassCard>
+            </div>
+            <div style={{marginTop:48}}>
+              <div style={{fontFamily:'var(--ko-font-display)', fontSize:12, fontWeight:900, letterSpacing:'0.22em', textTransform:'uppercase', color:'#6ED8FF', textAlign:'center', marginBottom:24}}>Ways to Combat Heat Stress</div>
+              <div className="ko-steps">
+                {HEAT_STEPS.map(([t,c], i) => <StepCard key={t} n={'0'+(i+1)} title={t} copy={c}/>)}
+              </div>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Humidity management */}
+        <SectionBand shade={1}>
+          <Reveal>
+            <SectionHead align="center"
+              eyebrow="Humidity Management"
+              title="Moisture is an invisible"
+              titleHighlight="operating cost."
+              sub="Relative humidity is the share of moisture the air is holding against its capacity. Left unmeasured, it turns into damage that is only visible once it is expensive." />
+            <div className="ko-two" style={{marginTop:56, gridTemplateColumns:'0.9fr 1.1fr'}}>
+              <GlassCard padding={36}>
+                <div style={{fontFamily:'var(--ko-font-display)', fontSize:12, fontWeight:900, letterSpacing:'0.22em', textTransform:'uppercase', color:'#6ED8FF'}}>When Humidity Becomes a Risk</div>
+                <div style={{marginTop:24, display:'flex', flexWrap:'wrap', gap:10}}>
+                  {HUMIDITY_RISKS.map(t => <Tag key={t}>{t}</Tag>)}
+                </div>
+                <p style={{margin:'26px 0 0', fontSize:14.5, color:'rgba(255,255,255,0.62)', lineHeight:1.65}}>Each one compounds. Mold triggers remediation, corrosion shortens asset life, spoilage writes off stock, and the maintenance bill absorbs the difference.</p>
+              </GlassCard>
+              <div className="ko-grid-4" style={{gridTemplateColumns:'repeat(2,1fr)'}}>
+                {HUMIDITY_ACTIONS.map(([ic,t,c]) => <FeatureCard key={t} icon={ic} title={t} copy={c}/>)}
+              </div>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Engineered environments */}
+        <SectionBand shade={0}>
+          <Reveal>
+            <SectionHead align="center"
+              eyebrow="Engineered Environments"
+              title="Precision humidity and"
+              titleHighlight="temperature control."
+              sub="We specialize in humidity and temperature management for operations where precision, consistency, and control are critical." />
+            <div className="ko-grid-3" style={{marginTop:56}}>
+              {SYSTEMS.map(([ic,t,c]) => <FeatureCard key={t} icon={ic} title={t} copy={c}/>)}
+            </div>
+            <div style={{marginTop:40, maxWidth:980, marginLeft:'auto', marginRight:'auto', padding:'36px 40px', borderRadius:30, border:'1px solid rgba(110,216,255,0.12)', background:'rgba(255,255,255,0.03)', backdropFilter:'blur(20px)'}}>
+              <div style={{fontFamily:'var(--ko-font-display)', fontSize:12, fontWeight:900, letterSpacing:'0.22em', textTransform:'uppercase', color:'#6ED8FF', textAlign:'center'}}>Essential In</div>
+              <div style={{marginTop:22, display:'flex', justifyContent:'center', flexWrap:'wrap', gap:12}}>
+                {ESSENTIAL_IN.map(t => <Tag key={t}>{t}</Tag>)}
+              </div>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Stats */}
+        <SectionBand shade={2}>
+          <Reveal>
+            <SectionHead align="center"
+              eyebrow="Why Klima Optima"
+              title="Trust"
+              titleHighlight="In Numbers."
+              sub="A track record across thousands of commercial deployments, measured in floors of treated space." />
+            <div className="ko-grid-4" style={{marginTop:56}}>
+              <StatCard icon="shield" value="10+" label="Years of Experience"/>
+              <StatCard icon="factory" value="3000+" label="Clients and Projects"/>
+              <StatCard icon="gear" value="100%" label="Local Support"/>
+              <StatCard icon="wind" value="5000+" label="Environments Optimized"/>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Teams */}
+        <SectionBand shade={1}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Expertise" title="The teams behind" titleHighlight="every deployment."/>
+            <div className="ko-grid-4" style={{marginTop:56}}>
+              {TEAM.map(([ic,t,c]) => <FeatureCard key={t} icon={ic} title={t} copy={c}/>)}
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Industries */}
+        <SectionBand shade={0}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Industries Served" title="Trusted across" titleHighlight="critical operations."/>
+            <div style={{marginTop:48, display:'flex', justifyContent:'center', flexWrap:'wrap', gap:12}}>
+              {['Healthcare','Hospitality','Construction','Cold Storage','Manufacturing','Warehousing','Data Centers','Laboratories','Food Processing','Logistics','Retail','Events'].map(t => <Tag key={t}>{t}</Tag>)}
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        <CTABand
+          eyebrow="Get in touch"
+          title="Climate-proof your operation."
+          sub="Tell us about your space and operation, we'll size the right system, plan deployment, and stay on for service."
+          primary={{label:'Request Consultation', href:'contact.html'}}
+          secondary={{label:'Browse Products', href:'products.html'}}
+        />
+      </Page>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+
+<script src="security.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brochures, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+
+  <script type="text/babel">
+    const CATEGORIES = [
+      {
+        id: 'humidity',
+        title: 'Humidity Control Solutions',
+        desc: 'Dehumidification and humidity management solutions for commercial, industrial, storage, healthcare, food manufacturing, pharmaceutical, and critical environments.',
+        items: [
+          {icon:'droplet', name:'Light Commercial Dehumidifiers', copy:'30-90 L/day moisture control for offices, condos, and healthcare facilities.', view:'light-commercial-dehumidifiers.html'},
+          {icon:'factory', name:'Commercial Dehumidifiers', copy:'90-200+ L/day business-grade control for warehouses, hotels, and retail.', view:'commercial-dehumidifiers.html'},
+          {icon:'wind', name:'Industrial Dehumidifiers', copy:'240-960 L/day heavy-duty extraction for manufacturing and data centers.', view:'industrial-dehumidifiers.html'},
+          {icon:'gauge', name:'Humidifiers', copy:'Ultrasonic, wet-film, and electrode steam humidification for process stability.', view:'humidifiers.html'},
+        ],
+      },
+      {
+        id: 'portable',
+        title: 'Portable Air Conditioning',
+        desc: 'Commercial and industrial portable cooling solutions designed for rapid deployment, spot cooling, temporary cooling, emergency cooling, and operational continuity.',
+        items: [
+          {icon:'snowflake', name:'Commercial Mobile Air Conditioners', copy:'Versatile portable cooling for offices, hospitality, retail, and events.', view:'commercial-aircons.html'},
+          {icon:'snowflake', name:'Duo AC', copy:'Dual-zone portable cooling with versatile airflow for offices, hotels, and events.', view:'commercial-aircons.html'},
+          {icon:'factory', name:'Industrial Portable Air Conditioners', copy:'Heavy-duty spot cooling for factories, warehouses, and workshops.', view:'industrial-portable-aircons.html'},
+          {icon:'wind', name:'Hybrid Air Conditioning Systems', copy:'Energy-efficient hybrid cooling combining evaporative and refrigerant cycles.', view:'hybrid-ac.html'},
+        ],
+      },
+      {
+        id: 'precision',
+        title: 'Precision Air Conditioning & Climate Control',
+        desc: 'Precision temperature and humidity control systems engineered for laboratories, cleanrooms, pharmaceutical facilities, electronics manufacturing, and mission-critical environments.',
+        items: [
+          {icon:'gauge', name:'Precision Air Conditioning', copy:'Tight-tolerance temperature control for mission-critical operations.', view:'precision-climate-control.html'},
+          {icon:'droplet', name:'Precision Humidity Control', copy:'Stable ±2% RH envelopes for sensitive process environments.', view:'humidity-control.html'},
+          {icon:'shield', name:'Laboratory Climate Control Systems', copy:'Controlled conditions for labs, testing, and research facilities.', view:'precision-climate-control.html'},
+          {icon:'building', name:'Cleanroom Environmental Control Solutions', copy:'Contamination-controlled climate management for cleanroom operations.', view:'precision-climate-control.html'},
+        ],
+      },
+    ];
+
+    const TABS = ['All', 'Humidity Control Solutions', 'Portable Air Conditioning', 'Precision Air Conditioning & Climate Control'];
+
+    const BrochureCard = ({item}) => {
+      const [hov, setHov] = React.useState(false);
+      const [zoom, setZoom] = React.useState(null);
+      const slotId = `brochure-thumb-${item.name.replace(/[^a-z0-9]/gi,'-').toLowerCase()}`;
+
+      const openZoom = (e) => {
+        e.preventDefault();
+        const el = document.getElementById(slotId);
+        let src = null;
+        if (el) {
+          // image-slot keeps its <img> inside a shadow root
+          const root = el.shadowRoot || el;
+          const img = root.querySelector('img[src^="data:"], img.ghost, img');
+          if (img && img.src && /^data:|^https?:|^blob:/.test(img.src)) src = img.src;
+        }
+        setZoom(src || '__empty__');
+      };
+
+      React.useEffect(() => {
+        if (!zoom) return;
+        const onKey = (ev) => { if (ev.key === 'Escape') setZoom(null); };
+        document.addEventListener('keydown', onKey);
+        const prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = prevOverflow; };
+      }, [zoom]);
+
+      return (
+        <div
+          onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+          style={{
+            position:'relative', borderRadius: 24, overflow:'hidden',
+            border:'1px solid ' + (hov ? 'rgba(110,216,255,0.34)' : 'rgba(110,216,255,0.12)'),
+            background:'rgba(255,255,255,0.045)', backdropFilter:'blur(20px)',
+            boxShadow: hov ? '0 30px 90px rgba(0,0,0,0.5), 0 0 50px rgba(24,183,255,0.12)' : '0 20px 70px rgba(0,0,0,0.35)',
+            transition:'all 260ms cubic-bezier(0.22,1,0.36,1)',
+            transform: hov ? 'translateY(-6px)' : 'none',
+            display:'flex', flexDirection:'column',
+          }}>
+          {/* Brochure thumbnail */}
+          <div style={{position:'relative', padding: 20, paddingBottom: 0}}>
+            <div style={{position:'relative', display:'flex', alignItems:'center', justifyContent:'center'}}>
+              <div style={{position:'absolute', inset:'-10% -5%', background:'radial-gradient(ellipse at 50% 40%, rgba(24,183,255,0.32), rgba(110,216,255,0.12) 50%, transparent 75%)', filter:'blur(34px)', pointerEvents:'none', zIndex: 0}}/>
+              <image-slot
+                id={slotId}
+                placeholder="Brochure cover"
+                shape="rounded" radius="14"
+                style={{
+                  position:'relative', zIndex: 1,
+                  width: '100%', height: '180px',
+                  borderRadius: '14px',
+                  border: '1px solid rgba(110,216,255,0.22)',
+                  background: 'rgba(6,23,40,0.55)',
+                  boxShadow: '0 14px 40px rgba(0,0,0,0.45)',
+                }}
+              />
+            </div>
+          </div>
+
+          <div style={{padding: '22px 22px 24px', display:'flex', flexDirection:'column', flex: 1}}>
+            <div style={{display:'flex', alignItems:'center', gap: 10}}>
+              <span style={{width: 34, height: 34, borderRadius: 10, flexShrink: 0, background: hov ? '#18B7FF' : 'rgba(24,183,255,0.10)', color: hov ? '#04111F' : '#6ED8FF', display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(110,216,255,0.18)', transition:'all 220ms'}}>
+                <Icon name={item.icon} size={18}/>
+              </span>
+              <h4 style={{fontFamily:'var(--ko-font-display)', fontWeight: 800, fontSize: 16, color:'#fff', lineHeight: 1.2, letterSpacing:'-0.01em'}}>{item.name}</h4>
+            </div>
+            <p style={{marginTop: 12, fontSize: 13.5, color:'rgba(255,255,255,0.62)', lineHeight: 1.55, flex: 1}}>{item.copy}</p>
+            <div style={{marginTop: 20, display:'flex', gap: 10}}>
+              <a href={item.pdf || '#'} download
+                style={{flex: 1, display:'inline-flex', alignItems:'center', justifyContent:'center', gap: 8, padding:'11px 14px', borderRadius: 10, textDecoration:'none',
+                  background:'linear-gradient(135deg, #18B7FF, #6ED8FF)', color:'#04111F',
+                  fontFamily:'var(--ko-font-display)', fontWeight: 800, fontSize: 12.5, transition:'all 220ms',
+                  boxShadow: hov ? '0 8px 24px rgba(24,183,255,0.35)' : 'none'}}>
+                <Icon name="download" size={14}/> PDF
+              </a>
+              <button onClick={openZoom}
+                style={{flex: 1, display:'inline-flex', alignItems:'center', justifyContent:'center', gap: 6, padding:'11px 14px', borderRadius: 10, cursor:'pointer',
+                  border:'1px solid rgba(110,216,255,0.30)', background:'rgba(24,183,255,0.08)', color:'#fff',
+                  fontFamily:'var(--ko-font-display)', fontWeight: 800, fontSize: 12.5, transition:'all 220ms'}}>
+                View <Icon name="search" size={13}/>
+              </button>
+            </div>
+          </div>
+
+          {/* Zoom lightbox */}
+          {zoom && ReactDOM.createPortal((
+            <div onClick={() => setZoom(null)}
+              style={{position:'fixed', inset:0, zIndex: 9999, display:'flex', alignItems:'flex-start', justifyContent:'center',
+                background:'rgba(3,11,20,0.90)', backdropFilter:'blur(16px)', WebkitBackdropFilter:'blur(16px)',
+                cursor:'zoom-out', padding: '72px 24px 48px', overflowY:'auto', animation:'koZoomFade 220ms ease-out'}}>
+              <button onClick={(e) => { e.stopPropagation(); setZoom(null); }} aria-label="Close preview"
+                style={{position:'fixed', top: 24, right: 24, width: 48, height: 48, borderRadius: '50%', cursor:'pointer', zIndex: 2,
+                  border:'1px solid rgba(110,216,255,0.30)', background:'rgba(6,23,40,0.72)', backdropFilter:'blur(10px)',
+                  color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', transition:'all 200ms'}}
+                onMouseEnter={(e)=>{e.currentTarget.style.background='rgba(24,183,255,0.22)'; e.currentTarget.style.borderColor='rgba(110,216,255,0.6)'; e.currentTarget.style.boxShadow='0 0 28px rgba(24,183,255,0.5)';}}
+                onMouseLeave={(e)=>{e.currentTarget.style.background='rgba(6,23,40,0.72)'; e.currentTarget.style.borderColor='rgba(110,216,255,0.30)'; e.currentTarget.style.boxShadow='none';}}>
+                <Icon name="x" size={22}/>
+              </button>
+              {zoom === '__empty__' ? (
+                <div style={{margin:'auto', textAlign:'center', maxWidth: 420}}>
+                  <div style={{width: 72, height: 72, margin:'0 auto', borderRadius: 18, background:'rgba(24,183,255,0.12)', color:'#6ED8FF', display:'flex', alignItems:'center', justifyContent:'center', border:'1px solid rgba(110,216,255,0.22)'}}>
+                    <Icon name="search" size={32}/>
+                  </div>
+                  <h4 style={{marginTop: 22, fontFamily:'var(--ko-font-display)', fontWeight: 800, fontSize: 20, color:'#fff'}}>{item.name}</h4>
+                  <p style={{marginTop: 10, fontSize: 14, color:'rgba(255,255,255,0.6)', lineHeight: 1.55}}>No brochure cover uploaded yet. Drop an image into this card's cover slot to enable the full-screen preview.</p>
+                </div>
+              ) : (
+                <img src={zoom} alt={`${item.name} brochure`} onClick={(e) => e.stopPropagation()}
+                  style={{display:'block', margin:'auto', width:'auto', height:'auto', maxWidth:'min(1100px, 96vw)', cursor:'default',
+                    borderRadius: 16, boxShadow:'0 40px 120px rgba(0,0,0,0.6), 0 0 80px rgba(24,183,255,0.18)', border:'1px solid rgba(110,216,255,0.22)'}}/>
+              )}
+            </div>
+          ), document.body)}
+        </div>
+      );
+    };
+
+    const CategorySection = ({cat, search}) => {
+      const items = cat.items.filter(it =>
+        !search || it.name.toLowerCase().includes(search) || it.copy.toLowerCase().includes(search) || cat.title.toLowerCase().includes(search)
+      );
+      if (!items.length) return null;
+      return (
+        <div style={{marginBottom: 64}}>
+          <div style={{maxWidth: 820, marginBottom: 32}}>
+            <h2 style={{fontFamily:'var(--ko-font-display)', fontWeight: 900, fontSize: 30, color:'#fff', letterSpacing:'-0.02em', lineHeight: 1.1}}>{cat.title}</h2>
+            <p style={{marginTop: 12, fontSize: 15, color:'rgba(255,255,255,0.64)', lineHeight: 1.6}}>{cat.desc}</p>
+          </div>
+          <div className="ko-brochure-grid" style={{display:'flex', flexWrap:'wrap', justifyContent:'center', gap: 18}}>
+            {items.map(it => <div key={it.name} className="ko-brochure-cell" style={{flex:'0 1 calc((100% - 36px) / 3)', minWidth: 0}}><BrochureCard item={it}/></div>)}
+          </div>
+        </div>
+      );
+    };
+
+    const BrochuresApp = () => {
+      const [active, setActive] = React.useState('All');
+      const [search, setSearch] = React.useState('');
+      const q = search.trim().toLowerCase();
+      const shown = CATEGORIES.filter(c => active === 'All' || c.title === active);
+
+      return (
+        <Page active="">
+          <style>{`
+            @keyframes koZoomFade { from { opacity: 0; } to { opacity: 1; } }
+            @media (max-width: 1024px) { .ko-brochure-cell { flex: 0 1 calc((100% - 18px) / 2) !important; } }
+            @media (max-width: 640px)  { .ko-brochure-cell { flex: 0 1 100% !important; } }
+          `}</style>
+          <PageHero
+            crumbs={[{label:'Home', href:'Klima Optima Homepage.html'},{label:'Resources', href:'resources.html'},{label:'Brochures'}]}
+            eyebrow="Resources"
+            headline="Brochures &"
+            headlineHighlight="Technical Documents"
+            sub="Download product catalogs, brochures, technical specifications, and application guides for Klima Optima climate control solutions."
+            ctas={<>
+              <a href="#library" className="ko-btn ko-btn-primary" style={{textDecoration:'none'}}>Browse Brochures <Icon name="arrow-right" size={18}/></a>
+              <a href="contact.html" className="ko-btn ko-btn-secondary" style={{textDecoration:'none'}}>Request Technical Advisory</a>
+            </>}
+          />
+
+          <SectionBand shade={1} id="library">
+            <Reveal>
+              {/* Search */}
+              <div style={{position:'relative', maxWidth: 560, marginBottom: 28}}>
+                <span style={{position:'absolute', left: 18, top:'50%', transform:'translateY(-50%)', color:'rgba(110,216,255,0.6)', display:'flex'}}>
+                  <Icon name="search" size={18}/>
+                </span>
+                <input
+                  type="text"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  placeholder="Search brochures, products, or solutions..."
+                  style={{
+                    width:'100%', padding:'14px 18px 14px 50px', borderRadius: 14,
+                    border:'1px solid rgba(110,216,255,0.20)', background:'rgba(255,255,255,0.045)',
+                    color:'#fff', fontFamily:'var(--ko-font-body)', fontSize: 15, outline:'none',
+                    backdropFilter:'blur(20px)',
+                  }}
+                />
+              </div>
+
+              {/* Tabs */}
+              <div style={{display:'flex', gap: 10, flexWrap:'wrap', marginBottom: 44}}>
+                {TABS.map(t => (
+                  <button key={t} onClick={() => setActive(t)} style={{
+                    padding:'10px 20px', borderRadius: 9999, cursor:'pointer',
+                    fontFamily:'var(--ko-font-display)', fontWeight: 700, fontSize: 13, letterSpacing:'0.01em',
+                    border:'1px solid ' + (active === t ? 'rgba(110,216,255,0.45)' : 'rgba(110,216,255,0.14)'),
+                    background: active === t ? 'rgba(24,183,255,0.16)' : 'rgba(255,255,255,0.04)',
+                    color: active === t ? '#9EEBFF' : 'rgba(255,255,255,0.78)',
+                    boxShadow: active === t ? '0 0 24px rgba(24,183,255,0.20)' : 'none',
+                    transition:'all 220ms',
+                  }}>{t}</button>
+                ))}
+              </div>
+
+              {shown.map(cat => <CategorySection key={cat.id} cat={cat} search={q}/>)}
+            </Reveal>
+          </SectionBand>
+
+          <CTABand
+            eyebrow="Need something specific?"
+            title="Can't find the document you need?"
+            sub="Our technical team can provide custom sizing reports, certified spec sheets, and integration documentation on request."
+            primary={{label:'Contact Technical Team', href:'contact.html'}}
+            secondary={{label:'All Resources', href:'resources.html'}}
+          />
+        </Page>
+      );
+    };
+    ReactDOM.createRoot(document.getElementById('root')).render(<BrochuresApp/>);
+  </script>
+
+
+<script src="security.js"></script>
+</body>
+</html>

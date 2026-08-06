@@ -1,0 +1,98 @@
+<!--
+  ══════════════════════════════════════════════════════════════
+  KLIMA OPTIMA — Security <head> Snippet
+  Paste this block inside the <head> of EVERY HTML page,
+  ideally near the top (before other scripts/styles).
+  ══════════════════════════════════════════════════════════════
+-->
+
+<!-- Force IE/Edge to use latest rendering engine -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Referrer Policy — limits how much URL info is sent to third parties -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- Content Security Policy (CSP) — meta tag version
+     This is a FALLBACK. The .htaccess header version is stronger.
+     Adjust the domains below to match your actual resources.
+     ──────────────────────────────────────────────────────────
+     Common additions:
+       Google Analytics:  https://www.googletagmanager.com https://www.google-analytics.com
+       Google Fonts:      https://fonts.googleapis.com https://fonts.gstatic.com
+       Font Awesome CDN:  https://cdnjs.cloudflare.com
+       Google reCAPTCHA:  https://www.google.com https://www.gstatic.com
+     ──────────────────────────────────────────────────────────
+-->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self' 'unsafe-inline'
+                 https://www.googletagmanager.com
+                 https://www.google-analytics.com
+                 https://www.google.com
+                 https://www.gstatic.com
+                 https://cdnjs.cloudflare.com;
+               style-src 'self' 'unsafe-inline'
+                 https://fonts.googleapis.com
+                 https://cdnjs.cloudflare.com;
+               font-src 'self'
+                 https://fonts.gstatic.com
+                 data:;
+               img-src 'self' data: https:;
+               frame-src https://www.google.com;
+               connect-src 'self' https://www.google-analytics.com;
+               object-src 'none';
+               base-uri 'self';
+               form-action 'self';">
+
+<!-- Prevent this page from being embedded in an iframe (clickjacking) -->
+<!-- Note: X-Frame-Options as a meta tag is NOT supported by all browsers.
+     The .htaccess header version is authoritative. This is a reminder only. -->
+
+<!-- Deny MIME-type sniffing -->
+<!-- (Set via .htaccess — this comment is a reminder that it's active) -->
+
+<!--
+  ══════════════════════════════════════════════════════════════
+  SCRIPT TAGS — Add these at the BOTTOM of every <body>
+  ══════════════════════════════════════════════════════════════
+
+  On ALL pages:
+    <script src="/security.js"></script>
+
+  On pages with a contact / quote / inquiry form:
+    <script src="/security.js"></script>
+    <script src="/contact-form-guard.js"></script>
+
+  ══════════════════════════════════════════════════════════════
+  FULL PAGE TEMPLATE — copy and adapt
+  ══════════════════════════════════════════════════════════════
+-->
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
+
+  <title>Page Title | Klima Optima</title>
+
+  < !-- Your CSS links -- >
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  < !-- Your page content here -- >
+
+  < !-- Security scripts — always at the very bottom of body -- >
+  <script src="/security.js"></script>
+  < !-- Add the next line ONLY on pages with forms: -- >
+  < !-- <script src="/contact-form-guard.js"></script> -- >
+
+</body>
+</html>
+-->

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light Commercial Dehumidifiers, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+
+  <script type="text/babel">
+    /* ================================================================
+       LIGHT COMMERCIAL DEHUMIDIFIERS
+       ================================================================ */
+
+    const PRODUCTS = [
+      {
+        model: 'KHD-630E',
+        name: 'Intelligent Dehumidifier',
+        titleImage: 'image 6.png',
+        fullName: 'Klima Optima KHD-630E Intelligent Dehumidifier',
+        capacity: '30 L/day',
+        tagline: 'Smart solution for modern homes and offices',
+        copy: 'The Klima Optima 630E Intelligent Dehumidifier is your smart solution to stop molds, odors, and allergens before they start. Designed with energy efficiency, quiet operation, and intelligent humidity control, perfect for bedrooms, condos, offices, and medium-sized living spaces.',
+        features: [
+          '30 L/day dehumidification capacity',
+          'Intelligent humidity control system',
+          'Energy-efficient operation',
+          'Quiet performance for occupied spaces',
+          'Smart auto-sensing technology',
+        ],
+        specs: [
+          ['Extraction', '30 L / day'],
+          ['Application', 'Bedrooms, condos, offices'],
+          ['Operation', 'Energy-efficient'],
+          ['Noise', 'Quiet operation'],
+          ['Control', 'Intelligent auto-sensing'],
+          ['Coverage', 'Medium-sized spaces'],
+        ],
+        applications: ['Bedrooms', 'Condos', 'Offices', 'Living spaces', 'Healthcare rooms'],
+        color: '#6ED8FF',
+        specSheet: 'assets/specs/KHD-630E.png',
+      },
+      {
+        model: 'KHD-660E',
+        name: 'Intelligent Light Commercial',
+        titleImage: 'image 7.png',
+        fullName: 'Klima Optima KHD-660E Intelligent Light Commercial Dehumidifier',
+        capacity: '60 L/day',
+        tagline: 'Maximum protection for larger spaces',
+        copy: 'The Klima Optima 660E Intelligent Light Commercial Dehumidifier is designed for larger spaces, removing up to 60L/day of excess moisture. Perfect for larger home areas, healthcare facilities, offices, and commercial spaces. With high-capacity moisture removal, energy-efficient performance, and smart humidity control, the 660E ensures your environment stays fresh, clean, and protected.',
+        features: [
+          '60 L/day high-capacity moisture removal',
+          'Intelligent smart humidity control',
+          'Energy-efficient performance',
+          'Perfect for larger commercial spaces',
+          'Maximum protection and comfort',
+        ],
+        specs: [
+          ['Extraction', '60 L / day'],
+          ['Application', 'Large homes, healthcare, offices'],
+          ['Capacity', 'High-capacity removal'],
+          ['Performance', 'Energy-efficient'],
+          ['Control', 'Smart humidity sensing'],
+          ['Coverage', 'Larger commercial spaces'],
+        ],
+        applications: ['Large homes', 'Healthcare facilities', 'Offices', 'Commercial spaces', 'Retail'],
+        color: '#9EEBFF',
+        specSheet: 'assets/specs/KHD-660E.png',
+      },
+    ];
+
+    const ProductBlock = ({p, reverse}) => {
+      const [hov, setHov] = React.useState(false);
+      return (
+        <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+          style={{
+            display:'grid', gridTemplateColumns: reverse ? '0.9fr 1.1fr' : '1.1fr 0.9fr', gap: 0, alignItems:'stretch',
+            borderRadius: 40, overflow:'hidden',
+            border:'1px solid ' + (hov ? 'rgba(110,216,255,0.30)' : 'rgba(110,216,255,0.12)'),
+            background:'linear-gradient(135deg, rgba(10,35,66,0.50), rgba(6,23,40,0.85))',
+            backdropFilter:'blur(20px)',
+            boxShadow: hov ? '0 40px 120px rgba(0,0,0,0.50), 0 0 80px rgba(24,183,255,0.12)' : '0 30px 110px rgba(0,0,0,0.40)',
+            transition:'all 320ms cubic-bezier(0.22,1,0.36,1)',
+            minHeight: 560,
+          }}>
+          <div style={{
+            order: reverse ? 2 : 1,
+            display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center',
+            padding: '64px 48px', position:'relative',
+            background:'radial-gradient(circle at 50% 40%, rgba(24,183,255,0.12), transparent 60%)',
+          }}>
+            <div style={{position:'absolute', inset:0, opacity:0.04, backgroundImage:'linear-gradient(90deg, rgba(110,216,255,0.7) 1px, transparent 1px), linear-gradient(rgba(110,216,255,0.7) 1px, transparent 1px)', backgroundSize:'32px 32px', pointerEvents:'none'}}/>
+            <div style={{position:'relative', width:'100%', flex: 1, display:'flex', alignItems:'center', justifyContent:'center', minHeight: 400, transform: hov ? 'translateY(-8px) scale(1.03)' : 'scale(1)', transition:'transform 400ms cubic-bezier(0.22,1,0.36,1)', zIndex: 2}}>
+              <image-slot 
+                id={`product-${p.model}`}
+                placeholder={`Drop ${p.name} product photo here`}
+                shape="rounded" radius="18"
+                style={{
+                  width: '400px',
+                  height: '400px',
+                  minHeight: '400px',
+                  borderRadius: '24px',
+                  border: '2px solid rgba(110,216,255,0.20)',
+                  background: 'rgba(6,23,40,0.60)',
+                  boxShadow: hov ? '0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(24,183,255,0.15)' : '0 20px 60px rgba(0,0,0,0.5)',
+                  transition: 'all 320ms',
+                }}
+              />
+            </div>
+            <div style={{position:'absolute', bottom: '15%', width: '80%', height: '30%', background:`radial-gradient(ellipse, ${p.color}40, transparent 65%)`, filter:'blur(50px)', pointerEvents:'none', opacity: hov ? 1 : 0.6, transition:'opacity 320ms'}}/>
+          </div>
+
+          <div style={{order: reverse ? 1 : 2, padding: '56px 56px', display:'flex', flexDirection:'column', justifyContent:'center'}}>
+            <div style={{display:'flex', alignItems:'center', gap: 14, flexWrap:'wrap'}}>
+              <span style={{fontFamily:'var(--ko-font-mono)', fontSize: 12, color: p.color, letterSpacing:'0.12em', padding:'6px 16px', borderRadius: 9999, border:`1px solid ${p.color}33`, background:`${p.color}12`, fontWeight: 600}}>{p.model}</span>
+              <span style={{fontFamily:'var(--ko-font-display)', fontSize: 10.5, fontWeight: 900, letterSpacing:'0.20em', textTransform:'uppercase', color:'rgba(110,216,255,0.50)'}}>Light Commercial</span>
+            </div>
+            <div style={{marginTop: 24, width:'100%', maxWidth: 420}}>
+              <image-slot 
+                id={`product-title-${p.model}`}
+                placeholder={`Drop ${p.titleImage} here`}
+                shape="rounded" radius="18"
+                style={{
+                  width: '100%',
+                  height: '80px',
+                  minHeight: '80px',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(110,216,255,0.30)',
+                  background: 'rgba(6,23,40,0.40)',
+                }}
+              />
+            </div>
+            <div style={{marginTop: 10, fontFamily:'var(--ko-font-display)', fontSize: 15, color: p.color, fontWeight: 700, letterSpacing:'0.01em'}}>{p.capacity} · {p.tagline}</div>
+            <p style={{marginTop: 22, color:'rgba(255,255,255,0.70)', lineHeight: 1.70, fontSize: 16}}>{p.copy}</p>
+            <div style={{marginTop: 24, display:'flex', flexDirection:'column', gap: 10}}>
+              {p.features.map((f, i) => (
+                <div key={i} style={{display:'flex', alignItems:'flex-start', gap: 12}}>
+                  <span style={{flexShrink:0, width: 20, height: 20, borderRadius: 6, background:'rgba(24,183,255,0.12)', color:'#18B7FF', display:'flex', alignItems:'center', justifyContent:'center', marginTop: 2}}>
+                    <Icon name="check" size={12}/>
+                  </span>
+                  <span style={{color:'rgba(255,255,255,0.80)', fontSize: 14, lineHeight: 1.5}}>{f}</span>
+                </div>
+              ))}
+            </div>
+            <div style={{marginTop: 24, display:'flex', flexWrap:'wrap', gap: 8}}>
+              {p.applications.map(a => <Tag key={a}>{a}</Tag>)}
+            </div>
+            <div style={{marginTop: 28, display:'flex', gap: 14}}>
+              <a href="contact.html" className="ko-btn ko-btn-primary" style={{textDecoration:'none', fontSize: 13}}>Inquire <Icon name="arrow-right" size={16}/></a>
+              <a href={p.specSheet || 'resources.html'} {...(p.specSheet ? { download: true, target: '_blank', rel: 'noopener' } : {})} className="ko-btn ko-btn-secondary" style={{textDecoration:'none', fontSize: 13}}>Download Spec Sheet</a>
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    const BENEFITS = [
+      ['bacteria', 'Prevent Mold & Mildew Growth', 'Stops mold and mildew development in enclosed spaces before it becomes a health hazard or damages surfaces.'],
+      ['droplet', 'Reduce Condensation Buildup', 'Eliminates condensation on walls, ceilings, windows, and equipment that leads to long-term moisture damage.'],
+      ['wind', 'Help Prevent Musty Odors', 'Removes excess moisture that causes persistent musty smells in closed commercial environments.'],
+      ['shield', 'Reduce Moisture Damage Risk', 'Protects interiors, furnishings, equipment, and finishes from humidity-related deterioration and warping.'],
+      ['thermo', 'Help Prevent Sticky Discomfort', 'Eliminates the sticky, uncomfortable indoor conditions caused by excessive humidity in occupied spaces.'],
+      ['warehouse', 'Protect Stored Materials', 'Safeguards documents, inventory, and sensitive materials from moisture exposure and degradation.'],
+    ];
+
+    const thS = {padding:'18px 24px', textAlign:'left', fontFamily:'var(--ko-font-display)', fontWeight: 900, fontSize: 11.5, letterSpacing:'0.18em', textTransform:'uppercase', color:'#6ED8FF'};
+    const tdS = {padding:'16px 24px', textAlign:'left', color:'rgba(255,255,255,0.72)', fontFamily:'var(--ko-font-mono)', fontSize: 13, letterSpacing:'0.02em'};
+
+    const App = () => (
+      <Page active="Products">
+        <PageHero
+          crumbs={[
+            {label:'Home', href:'Klima Optima Homepage.html'},
+            {label:'Products', href:'products.html'},
+            {label:'Dehumidifiers', href:'dehumidifiers.html'},
+            {label:'Light Commercial'},
+          ]}
+          eyebrow="Light Commercial Dehumidifiers"
+          headline="Light Commercial"
+          headlineHighlight="Dehumidifiers."
+          sub="Smart solutions to stop molds, odors, and allergens before they start. Designed with energy efficiency, quiet operation, and intelligent humidity control for homes and businesses."
+          ctas={<>
+            <a href="#products" className="ko-btn ko-btn-primary" style={{textDecoration:'none'}}>View Products <Icon name="arrow-right" size={18}/></a>
+            <a href="contact.html" className="ko-btn ko-btn-secondary" style={{textDecoration:'none'}}>Request Consultation</a>
+          </>}
+        />
+
+        <SectionBand shade={1} id="products">
+          <div style={{display:'flex', flexDirection:'column', gap: 40}}>
+            {PRODUCTS.map((p, i) => (
+              <Reveal key={p.model}>
+                <ProductBlock p={p} reverse={i % 2 === 1}/>
+              </Reveal>
+            ))}
+          </div>
+        </SectionBand>
+
+        <SectionBand shade={2}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Prevention & Risk Mitigation" title="What Problems Are" titleHighlight="Being Prevented?"/>
+            <div style={{marginTop: 56, display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap: 18}}>
+              {BENEFITS.map(([ic,t,c]) => <FeatureCard key={t} icon={ic} title={t} copy={c}/>)}
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        <SectionBand shade={0}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Comparison" title="Side-by-Side" titleHighlight="Specifications."/>
+            <div style={{marginTop: 56, borderRadius: 30, border:'1px solid rgba(110,216,255,0.16)', background:'rgba(255,255,255,0.04)', backdropFilter:'blur(20px)', overflow:'hidden', boxShadow:'0 30px 100px rgba(0,0,0,0.4)'}}>
+              <table style={{width:'100%', borderCollapse:'collapse', color:'#fff', fontFamily:'var(--ko-font-body)', fontSize: 14}}>
+                <thead>
+                  <tr style={{background:'rgba(24,183,255,0.06)'}}>
+                    <th style={thS}>Spec</th>
+                    <th style={thS}>KHD-630E</th>
+                    <th style={thS}>KHD-660E</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ['Extraction capacity', '30 L/day', '60 L/day'],
+                    ['Application', 'Bedrooms, condos, offices', 'Large homes, healthcare, offices'],
+                    ['Operation', 'Energy-efficient', 'Energy-efficient'],
+                    ['Control', 'Intelligent auto-sensing', 'Smart humidity sensing'],
+                    ['Capacity', 'Medium-sized spaces', 'High-capacity removal'],
+                    ['Best for', 'Homes and offices', 'Larger commercial spaces'],
+                  ].map((row, i) => (
+                    <tr key={i} style={{borderTop:'1px solid rgba(110,216,255,0.08)'}}>
+                      <td style={{...tdS, fontWeight: 700, color:'rgba(255,255,255,0.86)'}}>{row[0]}</td>
+                      {row.slice(1).map((v, j) => <td key={j} style={tdS}>{v}</td>)}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        <SectionBand shade={1}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Also Explore" title="Other Dehumidifier" titleHighlight="Categories."/>
+            <div style={{marginTop: 56, display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap: 18}}>
+              <FeatureCard icon="factory" title="Commercial Dehumidifiers" copy="90-200+ L/day for warehouses, hotels, retail, and production areas." link={{label:'View range', href:'commercial-dehumidifiers.html'}}/>
+              <FeatureCard icon="wind" title="Industrial Dehumidifiers" copy="200-500+ L/day for manufacturing, data centers, and critical environments." link={{label:'View range', href:'industrial-dehumidifiers.html'}}/>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        <CTABand
+          eyebrow="Need a Dehumidifier?"
+          title="Talk to Us"
+          sub="Tell us about your space, surface area, humidity levels, and operational needs, and we'll come back with a sized proposal."
+          primary={{label:'Request Consultation', href:'contact.html'}}
+          secondary={{label:'Download Catalog', href:'assets/catalog/Light-Commercial-Dehumidifiers-Catalog.pdf', download:true}}
+        />
+      </Page>
+    );
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+
+
+<script src="security.js"></script>
+</body>
+</html>

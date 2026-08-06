@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industrial Portable Aircons, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+
+  <script type="text/babel">
+
+/* ================================================================
+   INDUSTRIAL PORTABLE AIRCONS, KC-55A, KC-60, KC-65A
+   ================================================================ */
+
+const PRODUCTS = [
+{
+  model: 'KC-55A',
+  name: 'Spot Cool Pro',
+  titleImage: 'image 4.png',
+  fullName: 'Klima Optima Spot Cool Pro KC-55A',
+  btu: '15,300 BTU',
+  tagline: 'Compact industrial spot cooling',
+  copy: 'The Spot Cool Pro KC-55A provides 15,300 BTU cooling capacity and 40L/day dehumidification, engineered for compact but powerful spot cooling. With industrial durability and plug-and-play portability, ideal for localized cooling in workshops, offices, warehouses, and events.',
+  features: [
+  '15,300 BTU cooling power with strong airflow',
+  '40L/day dehumidification',
+  'Portable design with high-accuracy sensors',
+  'Plug & play setup with continuous drain option',
+  'Auto-defrost and efficient spot cooling mode'],
+
+  specs: [
+  ['Cooling capacity', '15,300 BTU/h'],
+  ['Dehumidification', '40 L / day'],
+  ['Sensors', 'High-accuracy thermal'],
+  ['Drainage', 'Continuous drain option'],
+  ['Defrost', 'Auto-defrost'],
+  ['Setup', 'Plug & play']],
+
+  applications: ['Workshops', 'Offices', 'Warehouses', 'Events', 'Spot cooling'],
+  color: '#6ED8FF',
+  logo: 'assets/products/spotcoolpro.png',
+  specSheet: 'assets/specs/KC-55A.png'
+},
+{
+  model: 'KC-65A',
+  name: 'Spot Cool Ultra',
+  titleImage: 'image 5.png',
+  fullName: 'Klima Optima Spot Cool Ultra KC-65A',
+  btu: '22,000 BTU',
+  tagline: 'Maximum industrial cooling power',
+  copy: 'The Spot Cool Ultra KC-65A delivers 22,000 BTU cooling power with 50L/day dehumidifying capacity, making it a powerhouse for workshops, warehouses, event spaces, and emergency cooling. Built with durable industrial-grade design for the most demanding environments.',
+  features: [
+  'High-capacity 22,000 BTU cooling',
+  'Dehumidification mode with 50L/day capacity',
+  'Portable plug-and-play design for easy setup',
+  'Powerful focus cooling with multi-pipe airflow',
+  'Continuous drain option and auto-defrost function'],
+
+  specs: [
+  ['Cooling capacity', '22,000 BTU/h'],
+  ['Dehumidification', '50 L / day'],
+  ['Airflow', 'Multi-pipe focus'],
+  ['Drainage', 'Continuous drain'],
+  ['Defrost', 'Auto-defrost'],
+  ['Build', 'Industrial-grade']],
+
+  applications: ['Warehouses', 'Workshops', 'Events', 'Emergency cooling', 'Industrial'],
+  color: '#9EEBFF',
+  logo: 'assets/products/spotcoolultra.png',
+  specSheet: 'assets/specs/KC-65A.png'
+}];
+
+/* Product image placeholders */
+
+/* --- Premium product blocks with image placeholders --- */
+const ProductBlock = ({ p, reverse }) => {
+  const [hov, setHov] = React.useState(false);
+  return (
+    <div onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+    style={{
+      display: 'grid', gridTemplateColumns: reverse ? '1fr 1fr' : '1fr 1fr', gap: 0, alignItems: 'stretch',
+      borderRadius: 40, overflow: 'hidden',
+      border: '1px solid ' + (hov ? 'rgba(110,216,255,0.30)' : 'rgba(110,216,255,0.12)'),
+      background: 'linear-gradient(135deg, rgba(10,35,66,0.50), rgba(6,23,40,0.85))',
+      backdropFilter: 'blur(20px)',
+      boxShadow: hov ? '0 40px 120px rgba(0,0,0,0.50), 0 0 80px rgba(24,183,255,0.12)' : '0 30px 110px rgba(0,0,0,0.40)',
+      transition: 'all 320ms cubic-bezier(0.22,1,0.36,1)',
+      minHeight: 620
+    }}>
+          {/* Product imagery area, LARGE PREMIUM SPACE */}
+          <div style={{
+        order: reverse ? 2 : 1,
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        padding: '72px 56px', position: 'relative',
+        background: 'radial-gradient(circle at 50% 40%, rgba(24,183,255,0.10), transparent 65%)'
+      }}>
+            <div style={{ position: 'absolute', inset: 0, opacity: 0.03, backgroundImage: 'linear-gradient(90deg, rgba(110,216,255,0.7) 1px, transparent 1px), linear-gradient(rgba(110,216,255,0.7) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }} />
+            
+            {/* MAIN PRODUCT IMAGE PLACEHOLDER, free to scale */}
+            <div style={{ position: 'relative', width: '100%', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 400, transform: hov ? 'translateY(-8px) scale(1.03)' : 'scale(1)', transition: 'transform 400ms cubic-bezier(0.22,1,0.36,1)', zIndex: 2, opacity: "1" }}>
+              <image-slot
+            id={`product-${p.model}`}
+            placeholder={`Drop ${p.name} product photo here`}
+            shape="rounded" radius="18"
+            style={{
+
+              minHeight: '400px',
+              borderRadius: '24px',
+              border: '2px solid rgba(110,216,255,0.20)',
+              background: 'rgba(6,23,40,0.60)',
+              boxShadow: hov ? '0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(24,183,255,0.15)' : '0 20px 60px rgba(0,0,0,0.5)',
+              transition: 'all 320ms', width: "400px", height: "400px"
+            }} />
+          
+            </div>
+            
+            {/* Dramatic glow beneath product */}
+            <div style={{ position: 'absolute', bottom: '10%', width: '75%', height: '35%', background: `radial-gradient(ellipse, ${p.color}50, transparent 70%)`, filter: 'blur(60px)', pointerEvents: 'none', opacity: hov ? 1 : 0.7, transition: 'opacity 320ms', zIndex: 1 }} />
+          </div>
+
+          {/* Product info */}
+          <div style={{ order: reverse ? 1 : 2, padding: '56px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+              <span style={{ fontFamily: 'var(--ko-font-mono)', fontSize: 12, color: p.color, letterSpacing: '0.12em', padding: '6px 16px', borderRadius: 9999, border: `1px solid ${p.color}33`, background: `${p.color}12`, fontWeight: 600 }}>{p.model}</span>
+              <span style={{ fontFamily: 'var(--ko-font-display)', fontSize: 10.5, fontWeight: 900, letterSpacing: '0.20em', textTransform: 'uppercase', color: 'rgba(110,216,255,0.50)' }}>Industrial Grade</span>
+            </div>
+            <div style={{ marginTop: 24, width: '100%', maxWidth: 420 }}>
+              <image-slot
+            id={`product-title-${p.model}`}
+            placeholder={`Drop ${p.titleImage} here`}
+            shape="rounded" radius="18"
+            style={{
+              width: '100%',
+              height: '80px',
+              minHeight: '80px',
+              borderRadius: '12px',
+
+              background: 'rgba(6,23,40,0.40)', border: "1px solid rgba(110, 216, 255, 0.3)"
+            }} />
+          
+            </div>
+            <div style={{ marginTop: 10, fontFamily: 'var(--ko-font-display)', fontSize: 15, color: p.color, fontWeight: 700, letterSpacing: '0.01em' }}>{p.btu} · {p.tagline}</div>
+            <p style={{ marginTop: 22, color: 'rgba(255,255,255,0.70)', lineHeight: 1.70, fontSize: 16 }}>{p.copy}</p>
+            <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {p.features.map((f, i) =>
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ flexShrink: 0, width: 20, height: 20, borderRadius: 6, background: 'rgba(24,183,255,0.12)', color: '#18B7FF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 2 }}>
+                    <Icon name="check" size={12} />
+                  </span>
+                  <span style={{ color: 'rgba(255,255,255,0.80)', fontSize: 14, lineHeight: 1.5 }}>{f}</span>
+                </div>
+          )}
+            </div>
+            <div style={{ marginTop: 24, display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {p.applications.map((a) => <Tag key={a}>{a}</Tag>)}
+            </div>
+            <div style={{ marginTop: 28, display: 'flex', gap: 14 }}>
+              <a href="contact.html" className="ko-btn ko-btn-primary" style={{ textDecoration: 'none', fontSize: 13 }}>Inquire <Icon name="arrow-right" size={16} /></a>
+              <a href={p.specSheet || 'resources.html'} {...(p.specSheet ? { download: true, target: '_blank', rel: 'noopener' } : {})} className="ko-btn ko-btn-secondary" style={{ textDecoration: 'none', fontSize: 13 }}>Download Spec Sheet</a>
+            </div>
+          </div>
+        </div>);
+
+};
+
+const thS = { padding: '18px 24px', textAlign: 'left', fontFamily: 'var(--ko-font-display)', fontWeight: 900, fontSize: 11.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#6ED8FF' };
+const tdS = { padding: '16px 24px', textAlign: 'left', color: 'rgba(255,255,255,0.72)', fontFamily: 'var(--ko-font-mono)', fontSize: 13, letterSpacing: '0.02em' };
+
+const App = () =>
+<Page active="Products">
+        <PageHero
+    crumbs={[
+    { label: 'Home', href: 'Klima Optima Homepage.html' },
+    { label: 'Products', href: 'products.html' },
+    { label: 'Air Conditioners', href: 'air-conditioners.html' },
+    { label: 'Industrial Portable Aircons' }]
+    }
+    eyebrow="Industrial Portable Aircons"
+    headline="Industrial-Grade"
+    headlineHighlight="Portable Cooling."
+    sub="Heavy-duty portable air conditioners built for factories, warehouses, workshops, and large-scale industrial cooling operations. Engineered for Philippine heat and continuous operation."
+    ctas={<>
+            <a href="#products" className="ko-btn ko-btn-primary" style={{ textDecoration: 'none' }}>View Products <Icon name="arrow-right" size={18} /></a>
+            <a href="contact.html" className="ko-btn ko-btn-secondary" style={{ textDecoration: 'none' }}>Request Consultation</a>
+          </>} />
+  
+
+        <SectionBand shade={1} id="products">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 40 }}>
+            {PRODUCTS.map((p, i) =>
+      <Reveal key={p.model}>
+                <ProductBlock p={p} reverse={i % 2 === 1} />
+              </Reveal>
+      )}
+          </div>
+        </SectionBand>
+
+        {/* Comparison table */}
+        <SectionBand shade={2}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Comparison" title="Side-by-Side" titleHighlight="Specifications." />
+            <div style={{ marginTop: 56, borderRadius: 30, border: '1px solid rgba(110,216,255,0.16)', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', overflow: 'hidden', boxShadow: '0 30px 100px rgba(0,0,0,0.4)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff', fontFamily: 'var(--ko-font-body)', fontSize: 14 }}>
+                <thead>
+                  <tr style={{ background: 'rgba(24,183,255,0.06)' }}>
+                    <th style={thS}>Spec</th>
+                    <th style={thS}>Spot Cool Pro (KC-55A)</th>
+                    <th style={thS}>Spot Cool Ultra (KC-65A)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+            ['Cooling capacity', '15,300 BTU/h', '22,000 BTU/h'],
+            ['Dehumidification', '40 L / day', '50 L / day'],
+            ['Airflow', 'Strong focus', 'Multi-pipe focus'],
+            ['Refrigerant', 'R410A', 'R410A'],
+            ['Drainage', 'Continuous', 'Continuous'],
+            ['Auto-defrost', 'Yes', 'Yes'],
+            ['Sensors', 'High-accuracy', 'High-accuracy'],
+            ['Best for', 'Compact spots', 'Maximum capacity']].
+            map((row, i) =>
+            <tr key={i} style={{ borderTop: '1px solid rgba(110,216,255,0.08)' }}>
+                      <td style={{ ...tdS, fontWeight: 700, color: 'rgba(255,255,255,0.86)' }}>{row[0]}</td>
+                      {row.slice(1).map((v, j) => <td key={j} style={tdS}>{v === ', ' ? <span style={{ color: 'rgba(255,255,255,0.30)' }}>, </span> : v}</td>)}
+                    </tr>
+            )}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        <SectionBand shade={0}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Also Explore" title="Other Cooling" titleHighlight="Categories." />
+            <div style={{ marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 18 }}>
+              <FeatureCard icon="snowflake" title="Commercial Mobile Aircons" copy="Portable AC for offices, restaurants, hotels, and events. From 7,200 to 24,000 BTU." link={{ label: 'View range', href: 'commercial-aircons.html' }} />
+              <FeatureCard icon="wind" title="Hybrid Aircon" copy="Energy-efficient hybrid cooling combining evaporative and refrigerant cycles." link={{ label: 'View range', href: 'hybrid-ac.html' }} />
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        <CTABand
+    eyebrow="Need Aircons?"
+    title="Talk To Us"
+    sub="Surface area, heat load, occupancy, operational hours, we'll size and spec the right aircons for your space."
+    primary={{ label: 'Request Consultation', href: 'contact.html' }}
+    secondary={{ label: 'Download Catalog', href: 'assets/catalog/Industrial-Portable-Aircons-Catalog.pdf', download: true }} />
+  
+      </Page>;
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<style id="__om-edit-overrides">
+  #product-title-KC-55A { border-width: 1px !important; }
+  #product-title-KC-65A { border: 1px solid rgba(110, 216, 255, 0.3) !important; }
+</style>
+
+
+<script src="security.js"></script>
+</body>
+</html>
