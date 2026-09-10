@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+<!-- ko-seo-start -->
+<meta name="description" content="Across healthcare, hospitality, manufacturing, cold storage, and critical environments, we engineer cooling, dehumidification, and air quality for the spaces…">
+<link rel="canonical" href="https://klimaoptima.com/industries.html">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Klima Optima">
+<meta property="og:locale" content="en_PH">
+<meta property="og:title" content="Industries, Klima Optima">
+<meta property="og:description" content="Across healthcare, hospitality, manufacturing, cold storage, and critical environments, we engineer cooling, dehumidification, and air quality for the spaces…">
+<meta property="og:url" content="https://klimaoptima.com/industries.html">
+<meta property="og:image" content="https://klimaoptima.com/assets/logos/klima-optima-wordmark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Industries, Klima Optima">
+<meta name="twitter:description" content="Across healthcare, hospitality, manufacturing, cold storage, and critical environments, we engineer cooling, dehumidification, and air quality for the spaces…">
+<meta name="twitter:image" content="https://klimaoptima.com/assets/logos/klima-optima-wordmark.png">
+<meta name="theme-color" content="#04111F">
+<link rel="icon" type="image/png" href="assets/logos/klima-optima-monogram-snowflake.png">
+<link rel="apple-touch-icon" href="assets/logos/klima-optima-monogram-snowflake.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://klimaoptima.com/industries.html","name":"Industries, Klima Optima","description":"Across healthcare, hospitality, manufacturing, cold storage, and critical environments, we engineer cooling, dehumidification, and air quality for the spaces…","inLanguage":"en-PH","isPartOf":{"@type":"WebSite","url":"https://klimaoptima.com/","name":"Klima Optima"},"publisher":{"@type":"Organization","name":"Klima Optima","url":"https://klimaoptima.com/"}}</script>
+<script type="application/ld+json" data-ko-breadcrumb-ld>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://klimaoptima.com/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://klimaoptima.com/industries.html"}]}</script>
+<!-- ko-seo-end -->
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+
+  <script type="text/babel">
+    const INDUSTRIES = [
+      { icon:'server',   label:'Data Centers',       copy:'Server halls, UPS and switch rooms, tight temperature and humidity bands held around the clock.', solutions:['Precision'] },
+      { icon:'chip',     label:'Semiconductors',     copy:'Fabrication and assembly lines, dry rooms, ultra-low humidity held to a fixed setpoint.', solutions:['Precision','Humidity Control'] },
+      { icon:'factory',  label:'Manufacturing',      copy:'Process cooling, line-side spot relief, moisture-sensitive production.',             solutions:['All three'] },
+      { icon:'shield',   label:'Industrial Facilities', copy:'Heavy industry, processing, treatment, bespoke climate engineered for the line.', solutions:['All three'] },
+      { icon:'warehouse',label:'Warehousing',        copy:'Goods protection, packaging integrity, moisture risk control at scale.',             solutions:['Humidity Control'] },
+      { icon:'cold',     label:'Cold Storage',       copy:'Anteroom dehumidification, condensate control at thermal interfaces.',               solutions:['Humidity Control','Precision'] },
+      { icon:'hospital', label:'Healthcare',         copy:'Wards, corridors, operating theatres, pharmacies, stable climate held continuously.', solutions:['Humidity Control','Precision'] },
+      { icon:'gauge',    label:'Critical Environments', copy:'Archives, laboratories, cleanrooms, precision climate held continuously.',        solutions:['Precision'] },
+      { icon:'building', label:'Construction',       copy:'Fit-out drying, dust mitigation, climate during finishing phases.',                  solutions:['Portable Cooling'] },
+      { icon:'hotel',    label:'Hospitality',        copy:'Hotels, resorts, ballrooms, event-grade cooling, guest-room dehumidification.',     solutions:['Portable Cooling','Humidity Control'] },
+      { icon:'building', label:'Commercial Offices', copy:'After-hours cooling, server-room precision, hot-spot backup.',                       solutions:['Portable + Precision'] },
+      { icon:'event',    label:'Events',             copy:'Conventions, marquees, festivals, portable cooling deployed and removed cleanly.',  solutions:['Portable Cooling'] },
+      { icon:'retail',   label:'Retail',             copy:'Shop-floor comfort, fitting-room climate, pop-up activations.',                      solutions:['Portable Cooling'] },
+      { icon:'restaurant',label:'Restaurants',       copy:'Kitchen heat relief, dining-room comfort, walk-in moisture management.',             solutions:['Portable Cooling','Humidity Control'] },
+    ];
+
+    const IndustryCard = ({ind}) => {
+      const [hov, setHov] = React.useState(false);
+      return (
+        <a href="contact.html" onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+          style={{
+            position:'relative', display:'flex', flexDirection:'column',
+            borderRadius: 30, padding: 30, minHeight: 320,
+            border:'1px solid ' + (hov ? 'rgba(110,216,255,0.32)' : 'rgba(110,216,255,0.12)'),
+            background: 'linear-gradient(180deg, rgba(10,35,66,0.50), rgba(6,23,40,0.85))',
+            backdropFilter:'blur(20px)',
+            boxShadow: hov ? '0 30px 100px rgba(0,0,0,0.50), 0 0 50px rgba(24,183,255,0.10)' : '0 24px 90px rgba(0,0,0,0.40)',
+            transform: hov ? 'translateY(-6px)' : 'none',
+            transition:'all 260ms cubic-bezier(0.22,1,0.36,1)',
+            textDecoration:'none', color:'inherit', overflow:'hidden',
+          }}>
+          <div style={{position:'absolute', top:-30, right:-30, width: 200, height: 200, background:'radial-gradient(circle, rgba(24,183,255,0.20), transparent 60%)', pointerEvents:'none', opacity: hov ? 1 : 0.6, transition:'opacity 260ms'}}/>
+          <div style={{position:'absolute', inset:0, opacity:0.06, backgroundImage:'linear-gradient(90deg, rgba(110,216,255,0.7) 1px, transparent 1px), linear-gradient(rgba(110,216,255,0.7) 1px, transparent 1px)', backgroundSize:'24px 24px', pointerEvents:'none'}}/>
+          <div style={{position:'relative', width: 56, height: 56, borderRadius: 18, background: hov ? '#18B7FF' : 'rgba(24,183,255,0.10)', color: hov ? '#04111F' : '#6ED8FF', display:'flex', alignItems:'center', justifyContent:'center', boxShadow: hov ? '0 0 30px rgba(24,183,255,0.40)' : '0 0 20px rgba(24,183,255,0.14)', border:'1px solid rgba(110,216,255,0.18)', transition:'all 240ms'}}>
+            <Icon name={ind.icon} size={26}/>
+          </div>
+          <h3 style={{position:'relative', marginTop: 24, fontFamily:'var(--ko-font-display)', fontWeight: 900, fontSize: 22, color:'#fff', letterSpacing:'-0.01em', lineHeight: 1.2}}>{ind.label}</h3>
+          <p style={{position:'relative', marginTop: 12, color:'rgba(255,255,255,0.62)', fontSize: 14, lineHeight: 1.6, flex: 1}}>{ind.copy}</p>
+          <div style={{position:'relative', marginTop: 20, paddingTop: 16, borderTop:'1px solid rgba(110,216,255,0.10)', display:'flex', alignItems:'center', justifyContent:'flex-start', gap: 10}}>
+            <span style={{fontFamily:'var(--ko-font-display)', fontWeight: 700, fontSize: 14, color: hov ? '#9EEBFF' : '#6ED8FF', display:'inline-flex', alignItems:'center', gap: hov ? 12 : 8, transition:'all 220ms'}}>
+              Contact Us <Icon name="arrow-right" size={15}/>
+            </span>
+          </div>
+        </a>
+      );
+    };
+
+    const App = () => (
+      <Page active="Industries">
+        <PageHero
+          crumbs={[{label:'Home', href:'Klima Optima Homepage.html'},{label:'Industries'}]}
+          eyebrow="Industries"
+          headline="Trusted by Businesses"
+          headlineHighlight="Across Industries."
+          sub="Across healthcare, hospitality, manufacturing, cold storage, and critical environments, we engineer cooling, dehumidification, and air quality for the spaces businesses depend on."
+          ctas={<>
+            <a href="#grid" className="ko-btn ko-btn-primary" style={{textDecoration:'none'}}>Browse Industries <Icon name="arrow-right" size={18}/></a>
+            <a href="contact.html" className="ko-btn ko-btn-secondary" style={{textDecoration:'none'}}>Inquire for Consultation</a>
+          </>}
+        />
+
+        {/* Grid */}
+        <SectionBand shade={1} id="grid">
+          <Reveal>
+            <SectionHead align="center" eyebrow="By Industry" title="Fourteen sectors," titleHighlight="one specialist." sub="Each engagement is bespoke, but we've seen and serviced enough of every sector to skip the learning curve."/>
+            <div style={{marginTop: 56, display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap: 18}}>
+              {INDUSTRIES.map(ind => <IndustryCard key={ind.label} ind={ind}/>)}
+            </div>
+            <div style={{marginTop: 32, textAlign:'center', fontFamily:'var(--ko-font-display)', fontWeight: 900, fontSize: 20, color:'#6ED8FF', letterSpacing:'-0.01em'}}>and more</div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Trust stats */}
+        <SectionBand shade={2}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Why Klima Optima" title="Why" titleHighlight="Klima Optima." sub="We combine proven technologies, deep industry expertise, and dependable local support to deliver climate control solutions that perform."/>
+            <div style={{marginTop: 56, display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap: 18}}>
+              <StatCard icon="shield"  value="10+"    label="Years of Experience"/>
+              <StatCard icon="factory" value="3,000+" label="Clients and Projects"/>
+              <StatCard icon="gear"    value="100%"   label="Local Support"/>
+              <StatCard icon="wind"    value="5,000+" label="Environments Optimized"/>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+      </Page>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+
+
+<script src="security.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+/* ============================================================
+   KLIMA OPTIMA — Design Tokens
+   Premium B2B climate control. Dark luxury enterprise.
+   ============================================================ */
+
+/* --- Webfonts (Google Fonts substitutes for Inter Tight / Manrope) --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ============================================================
+     COLOR — DARK ENTERPRISE PALETTE
+     ============================================================ */
+
+  /* Primary background palette (darkest → mid-deep) */
+  --ko-midnight:        #030B14;  /* base page background */
+  --ko-deep-blue:       #04111F;  /* primary hero base */
+  --ko-industrial:      #071B2F;  /* secondary band */
+  --ko-steel-blue:      #0A2342;  /* card / panel base */
+  --ko-hvac-blue:       #061728;  /* alt deep band */
+
+  /* Accent — Electric Cyan family */
+  --ko-cyan:            #18B7FF;  /* signature electric cyan */
+  --ko-cyan-ice:        #6ED8FF;  /* ice blue (secondary text accent, hover) */
+  --ko-cyan-glow:       #0E8ED0;  /* deeper cyan for gradients */
+  --ko-cyan-highlight:  #9EEBFF;  /* highlight stop in gradients */
+
+  /* Text colors */
+  --ko-fg-primary:      #FFFFFF;
+  --ko-fg-secondary:    rgba(255, 255, 255, 0.76);
+  --ko-fg-muted:        rgba(255, 255, 255, 0.58);
+  --ko-fg-faint:        rgba(255, 255, 255, 0.42);
+  --ko-fg-on-cyan:      #04111F;  /* dark ink used on a cyan fill */
+
+  /* Glass / surface tokens */
+  --ko-glass-1:         rgba(255, 255, 255, 0.035); /* subtle */
+  --ko-glass-2:         rgba(255, 255, 255, 0.045); /* default card */
+  --ko-glass-3:         rgba(255, 255, 255, 0.06);  /* hover / chip */
+  --ko-glass-4:         rgba(255, 255, 255, 0.10);  /* active */
+  --ko-glass-tint:      rgba(6, 23, 40, 0.45);      /* tinted dark glass for headers */
+
+  /* Hairlines / borders */
+  --ko-line-1:          rgba(110, 216, 255, 0.10);  /* cyan-tinted hairline */
+  --ko-line-2:          rgba(110, 216, 255, 0.18);  /* visible hairline */
+  --ko-line-3:          rgba(110, 216, 255, 0.30);  /* hover hairline */
+  --ko-line-strong:     rgba(24, 183, 255, 0.55);   /* active */
+
+  /* Semantic */
+  --ko-success:         #34D399;
+  --ko-warning:         #F5B547;
+  --ko-error:           #FF5B5B;
+  --ko-info:            var(--ko-cyan);
+
+  /* ============================================================
+     GRADIENTS — cinematic, blue-lit, layered
+     ============================================================ */
+  --ko-grad-headline:   linear-gradient(90deg, #18B7FF 0%, #9EEBFF 100%);
+  --ko-grad-cta:        linear-gradient(90deg, #0E8ED0 0%, #18B7FF 100%);
+  --ko-grad-hero-base:  linear-gradient(135deg, #030B14 0%, #071B2F 42%, #0A2342 72%, #061728 100%);
+  --ko-grad-spotlight:  radial-gradient(circle at 20% 30%, rgba(24,183,255,0.28), transparent 30%),
+                        radial-gradient(circle at 80% 20%, rgba(14,78,138,0.45), transparent 34%);
+  --ko-grad-section:    linear-gradient(180deg, #030B14 0%, #061728 55%, #071B2F 100%);
+  --ko-grad-panel:      linear-gradient(135deg, rgba(14,78,138,0.35), rgba(255,255,255,0.035));
+  --ko-grad-grid:       linear-gradient(90deg, rgba(110,216,255,0.18) 1px, transparent 1px),
+                        linear-gradient(rgba(110,216,255,0.16) 1px, transparent 1px);
+
+  /* ============================================================
+     SHADOWS & GLOWS
+     ============================================================ */
+  --ko-shadow-card:     0 24px 90px rgba(0, 0, 0, 0.36);
+  --ko-shadow-card-lg:  0 40px 120px rgba(0, 0, 0, 0.50);
+  --ko-shadow-soft:     0 12px 40px rgba(0, 0, 0, 0.30);
+  --ko-glow-cyan-sm:    0 0 18px rgba(24, 183, 255, 0.55);
+  --ko-glow-cyan-md:    0 0 28px rgba(24, 183, 255, 0.65);
+  --ko-glow-cyan-lg:    0 0 38px rgba(24, 183, 255, 0.32);
+  --ko-glow-cyan-xl:    0 0 60px rgba(24, 183, 255, 0.22);
+
+  /* ============================================================
+     RADII — premium round, but precise
+     ============================================================ */
+  --ko-radius-xs:       6px;
+  --ko-radius-sm:       12px;
+  --ko-radius-md:       20px;
+  --ko-radius-lg:       30px;   /* signature solution-card radius */
+  --ko-radius-xl:       40px;   /* big feature panel */
+  --ko-radius-pill:     9999px; /* buttons, chips */
+
+  /* ============================================================
+     SPACING — 8px grid; generous, spacious
+     ============================================================ */
+  --ko-space-1:  4px;
+  --ko-space-2:  8px;
+  --ko-space-3:  12px;
+  --ko-space-4:  16px;
+  --ko-space-5:  24px;
+  --ko-space-6:  32px;
+  --ko-space-7:  48px;
+  --ko-space-8:  64px;
+  --ko-space-9:  96px;
+  --ko-space-10: 128px;
+  --ko-section:  96px;   /* major editorial band padding */
+
+  /* ============================================================
+     LAYOUT
+     ============================================================ */
+  --ko-container:       1480px;
+  --ko-gutter:          40px;
+
+  /* ============================================================
+     TYPE — Inter Tight (display) + Manrope (body)
+     ============================================================ */
+  --ko-font-display:    'Inter Tight', 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ko-font-body:       'Manrope', 'Inter Tight', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ko-font-mono:       'JetBrains Mono', 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Weights (display=heavy, body=light/medium) */
+  --ko-weight-light:    300;
+  --ko-weight-regular:  400;
+  --ko-weight-medium:   500;
+  --ko-weight-semibold: 600;
+  --ko-weight-bold:     700;
+  --ko-weight-black:    900;
+
+  /* Type scale (rem-based, base 16px) */
+  --ko-size-micro:      0.75rem;   /* 12 — uppercase labels */
+  --ko-size-caption:    0.8125rem; /* 13 — meta */
+  --ko-size-body-sm:    0.875rem;  /* 14 */
+  --ko-size-body:       1rem;      /* 16 */
+  --ko-size-body-lg:    1.125rem;  /* 18 — lead paragraph */
+  --ko-size-title-sm:   1.25rem;   /* 20 */
+  --ko-size-title:      1.5rem;    /* 24 */
+  --ko-size-h4:         2rem;      /* 32 */
+  --ko-size-h3:         2.5rem;    /* 40 */
+  --ko-size-h2:         3.25rem;   /* 52 */
+  --ko-size-h1:         4.25rem;   /* 68 — hero */
+  --ko-size-display:    5.5rem;    /* 88 — outsize editorial */
+
+  /* Tracking */
+  --ko-track-tight:     -0.02em;
+  --ko-track-snug:      -0.01em;
+  --ko-track-normal:    0;
+  --ko-track-wide:      0.08em;
+  --ko-track-label:     0.22em;   /* signature uppercase label */
+
+  /* Line heights */
+  --ko-lh-tight:        0.95;
+  --ko-lh-display:      1.02;
+  --ko-lh-heading:      1.12;
+  --ko-lh-body:         1.55;
+  --ko-lh-loose:        1.75;
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ko-ease-out:        cubic-bezier(0.22, 1, 0.36, 1);
+  --ko-ease-in-out:     cubic-bezier(0.65, 0, 0.35, 1);
+  --ko-dur-fast:        160ms;
+  --ko-dur-base:        240ms;
+  --ko-dur-slow:        420ms;
+
+  /* ============================================================
+     BLUR
+     ============================================================ */
+  --ko-blur-glass-sm:   blur(12px);
+  --ko-blur-glass-md:   blur(20px);   /* default glassmorphism */
+  --ko-blur-glass-lg:   blur(32px);   /* big panels */
+
+  /* ============================================================
+     RESPONSIVE BREAKPOINTS
+     ============================================================ */
+  --ko-bp-mobile:       320px;
+  --ko-bp-mobile-lg:    480px;
+  --ko-bp-tablet:       768px;
+  --ko-bp-tablet-lg:    1024px;
+  --ko-bp-laptop:       1280px;
+  --ko-bp-desktop:      1440px;
+  --ko-bp-wide:         1920px;
+}
+
+/* ============================================================
+   BASE — page defaults sit on the deepest navy
+   ============================================================ */
+html, body {
+  background: var(--ko-midnight);
+  color: var(--ko-fg-primary);
+  font-family: var(--ko-font-body);
+  font-weight: var(--ko-weight-regular);
+  font-size: var(--ko-size-body);
+  line-height: var(--ko-lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================================
+   SEMANTIC TYPOGRAPHY ROLES
+   Apply by class for HTML, or set on elements where convenient.
+   ============================================================ */
+
+.ko-display, h1.ko-display {
+  font-family: var(--ko-font-display);
+  font-weight: var(--ko-weight-black);
+  font-size: clamp(3rem, 6vw, var(--ko-size-display));
+  line-height: var(--ko-lh-tight);
+  letter-spacing: var(--ko-track-tight);
+  color: var(--ko-fg-primary);
+}
+
+.ko-h1, h1 {
+  font-family: var(--ko-font-display);
+  font-weight: var(--ko-weight-black);
+  font-size: clamp(2.5rem, 5vw, var(--ko-size-h1));
+  line-height: var(--ko-lh-display);
+  letter-spacing: var(--ko-track-tight);
+  color: var(--ko-fg-primary);
+}
+
+.ko-h2, h2 {
+  font-family: var(--ko-font-display);
+  font-weight: var(--ko-weight-black);
+  font-size: clamp(2rem, 4vw, var(--ko-size-h2));
+  line-height: var(--ko-lh-heading);
+  letter-spacing: var(--ko-track-tight);
+  color: var(--ko-fg-primary);
+}
+
+.ko-h3, h3 {
+  font-family: var(--ko-font-display);
+  font-weight: var(--ko-weight-bold);
+  font-size: var(--ko-size-h3);
+  line-height: var(--ko-lh-heading);
+  letter-spacing: var(--ko-track-snug);
+  color: var(--ko-fg-primary);
+}
+
+.ko-h4, h4 {
+  font-family: var(--ko-font-display);
+  font-weight: var(--ko-weight-bold);
+  font-size: var(--ko-size-h4);
+  line-height: var(--ko-lh-heading);
+  color: var(--ko-fg-primary);
+}
+
+.ko-title {
+  font-family: var(--ko-font-display);
+  font-weight: var(--ko-weight-bold);
+  font-size: var(--ko-size-title);
+  line-height: 1.25;
+  color: var(--ko-fg-primary);
+}
+
+.ko-lead, .ko-body-lg {
+  font-family: var(--ko-font-body);
+  font-size: var(--ko-size-body-lg);
+  line-height: var(--ko-lh-body);
+  color: var(--ko-fg-secondary);
+  font-weight: var(--ko-weight-regular);
+}
+
+.ko-body, p {
+  font-family: var(--ko-font-body);
+  font-size: var(--ko-size-body);
+  line-height: var(--ko-lh-body);
+  color: var(--ko-fg-secondary);
+}
+
+.ko-body-sm {
+  font-size: var(--ko-size-body-sm);
+  line-height: var(--ko-lh-body);
+  color: var(--ko-fg-muted);
+}
+
+/* Micro label — the signature uppercase tracked label
+   ENGINEERED FOR PRECISION PERFORMANCE / OUR SOLUTIONS / etc */
+.ko-micro {
+  font-family: var(--ko-font-display);
+  font-weight: var(--ko-weight-black);
+  font-size: var(--ko-size-micro);
+  letter-spacing: var(--ko-track-label);
+  text-transform: uppercase;
+  color: var(--ko-cyan-ice);
+}
+
+/* Cyan gradient text — for the signature word inside a headline
+   <h1>Climate Control Built for <span class="ko-grad-text">Demanding Spaces</span></h1> */
+.ko-grad-text {
+  background: var(--ko-grad-headline);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tagline italic — used under the wordmark
+   "The Climate Control Specialist" */
+.ko-tagline {
+  font-family: var(--ko-font-body);
+  font-style: italic;
+  font-weight: var(--ko-weight-medium);
+  color: var(--ko-cyan-ice);
+  letter-spacing: 0.02em;
+}
+
+/* Mono caption — telemetry / spec rows */
+.ko-mono {
+  font-family: var(--ko-font-mono);
+  font-size: var(--ko-size-caption);
+  letter-spacing: 0.04em;
+  color: var(--ko-fg-muted);
+}
+
+/* Links */
+a {
+  color: var(--ko-cyan-ice);
+  text-decoration: none;
+  transition: color var(--ko-dur-fast) var(--ko-ease-out);
+}
+a:hover {
+  color: var(--ko-cyan);
+}
