@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Humidity Control, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+<!-- ko-seo-start -->
+<meta name="description" content="Dehumidification and humidification engineered to hold stable moisture levels in commercial, industrial, and critical environments.">
+<link rel="canonical" href="https://klimaoptima.com/humidity-control.html">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Klima Optima">
+<meta property="og:locale" content="en_PH">
+<meta property="og:title" content="Humidity Control, Klima Optima">
+<meta property="og:description" content="Dehumidification and humidification engineered to hold stable moisture levels in commercial, industrial, and critical environments.">
+<meta property="og:url" content="https://klimaoptima.com/humidity-control.html">
+<meta property="og:image" content="https://klimaoptima.com/assets/logos/klima-optima-wordmark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Humidity Control, Klima Optima">
+<meta name="twitter:description" content="Dehumidification and humidification engineered to hold stable moisture levels in commercial, industrial, and critical environments.">
+<meta name="twitter:image" content="https://klimaoptima.com/assets/logos/klima-optima-wordmark.png">
+<meta name="theme-color" content="#04111F">
+<link rel="icon" type="image/png" href="assets/logos/klima-optima-monogram-snowflake.png">
+<link rel="apple-touch-icon" href="assets/logos/klima-optima-monogram-snowflake.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://klimaoptima.com/humidity-control.html","name":"Humidity Control, Klima Optima","description":"Dehumidification and humidification engineered to hold stable moisture levels in commercial, industrial, and critical environments.","inLanguage":"en-PH","isPartOf":{"@type":"WebSite","url":"https://klimaoptima.com/","name":"Klima Optima"},"publisher":{"@type":"Organization","name":"Klima Optima","url":"https://klimaoptima.com/"}}</script>
+<!-- ko-seo-end -->
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+  <script type="text/babel" src="SolutionDetail.jsx"></script>
+
+  <script type="text/babel">
+    const data = {
+      crumbs: [
+        {label:'Home', href:'Klima Optima Homepage.html'},
+        {label:'Solutions', href:'solutions.html'},
+        {label:'Humidity Control'},
+      ],
+      heroIcon: 'droplet',
+      eyebrow: 'Humidity Control',
+      headline: 'The Right Humidity,',
+      headlineHighlight: 'Held Steady.',
+      sub: "Humid climates keep moisture high for most of the year, but air that is too dry is just as damaging as air that is too humid. Humidity control keeps relative humidity in the right band: pulling moisture out when it's damp and adding it back when it's dry, protecting your people, products, and equipment all year round.",
+      heroMetrics: [
+        ['Operating RH', '30-95 %'],
+        ['Tolerance', '±2 %'],
+        ['Coverage', 'up to 250 m²'],
+        ['Drainage', 'Continuous'],
+      ],
+      problemsEyebrow: 'The Risk',
+      problemsTitle: 'What the wrong humidity',
+      problemsTitleHighlight: 'costs you.',
+      problemsSub: 'Too much or too little, humidity outside the safe band quietly damages goods, equipment, and comfort.',
+      problems: [
+        ['droplet',   'Mold, mildew & odors',          'Damp air above ~70% RH triggers mold colonisation, musty odors, and allergens on goods and surfaces.'],
+        ['factory',   'Corrosion & equipment damage',  'Excess moisture accelerates rust, electrical degradation, and mechanical wear across machinery and electronics.'],
+        ['warehouse', 'Product & inventory spoilage',  'Cardboard collapse, label de-lamination, and hygroscopic product damage drive avoidable losses.'],
+        ['zap',       'Static & electronics damage',   'Air that is too dry (below ~30% RH) builds static charge that damages electronics and disrupts processes.'],
+        ['leaf',      'Drying, cracking & shrinkage',   'Low humidity dries out and warps wood, paper, textiles, food, and pharmaceuticals.'],
+        ['support',   'Discomfort & health effects',   'Both extremes hurt people, dampness breeds allergens, dryness irritates skin, eyes, and airways.'],
+      ],
+      benefitsEyebrow: 'Why It Matters',
+      benefitsTitle: 'What humidity control',
+      benefitsTitleHighlight: 'protects.',
+      benefitsSub: 'Hold relative humidity in the safe band, not too damp, not too dry, and the risks above stop compounding.',
+      benefits: [
+        ['shield',   'Protects your inventory', 'Goods, packaging, and finished product kept safe whether the air runs too damp or too dry.'],
+        ['gauge',    'Stable RH envelope',      'Relative humidity held within a target band across operational hours, monitored and consistent.'],
+        ['factory',  'Equipment longevity',     'Less corrosion, static, and wear on machinery, electronics, and electrical systems.'],
+        ['support',  'Healthier air & comfort', 'Balanced moisture for a healthier, more comfortable space, no mold, no dryness.'],
+      ],
+      ctaEyebrow: 'Talk to us',
+      ctaTitle: "Let's fix your humidity problems today.",
+      ctaSub: 'Tell us about your space, our specialists will recommend the right equipment type, capacity, and target RH for your operations and products.',
+      productsEyebrow: 'The Lineup',
+      productsTitle: 'Klima Optima Humidity Control',
+      productsTitleHighlight: 'Lineup.',
+      productsSub: 'Dehumidifiers to pull moisture out and humidifiers to add it back, matched to your space, capacity, and target relative humidity.',
+      productGroups: [
+        {
+          title: 'Dehumidifiers',
+          items: [
+            {icon:'building',  title:'Light Commercial Dehumidifiers',         img:{id:'dehumidifier-card-light-commercial', placeholder:'Drop the Light Commercial range photo here'}, copy:'Smart solutions to stop molds, odors, and allergens before they start. Energy-efficient, quiet operation with intelligent humidity control for Philippine homes and businesses.', href:'light-commercial-dehumidifiers.html'},
+            {icon:'warehouse', title:'Commercial Dehumidifiers',               img:{id:'dehumidifier-card-commercial', placeholder:'Drop the Commercial range photo here'}, copy:'Powerful dehumidification engineered for businesses that need strong, reliable moisture control. Prevents mold, mildew, and equipment damage in offices, warehouses, hotels, and commercial facilities.', href:'commercial-dehumidifiers.html'},
+            {icon:'factory',   title:'Industrial Floorstanding Dehumidifiers', img:{id:'dehumidifier-card-industrial', placeholder:'Drop the Industrial Floorstanding range photo here'}, copy:'Industrial-grade dehumidification built to maintain required humidity levels and prevent problems caused by excess humidity. For manufacturing, data centers, warehouses, and water-damage restoration.', href:'industrial-dehumidifiers.html'},
+            {icon:'hotel',     title:'Commercial Ceiling Dehumidifiers',       img:{id:'dehumidifier-card-commercial-ceiling', placeholder:'Drop the Commercial Ceiling range photo here'}, copy:'Concealed ceiling-mounted dehumidification that frees up floor space while delivering even, quiet moisture control across commercial interiors.', href:'commercial-ceiling-dehumidifiers.html'},
+            {icon:'wind',      title:'Industrial Ducted Dehumidifiers',        img:{id:'dehumidifier-card-industrial-ducted', placeholder:'Drop the Industrial Ducted range photo here'}, copy:'High-capacity ducted dehumidification that distributes dry air across entire facilities through flexible ductwork, engineered for whole-building moisture control.', href:'industrial-ducted-dehumidifiers.html'},
+            {icon:'server',    title:'Cabinet Type Dehumidifiers',             img:{id:'dehumidifier-card-cabinet', placeholder:'Drop the Cabinet Type range photo here'}, copy:'Robust freestanding cabinet dehumidifiers built for continuous heavy-duty extraction, rugged, mobile, and maintenance-friendly.', href:'cabinet-dehumidifiers.html'},
+            {icon:'fan',       title:'Rotor Desiccant Dehumidifiers',          img:{id:'dehumidifier-card-rotor-desiccant', placeholder:'Drop the Rotor Desiccant range photo here'}, copy:'Desiccant rotor technology that drives humidity to ultra-low levels independent of temperature, available in industrial and heavy-industrial capacities.', href:'rotor-desiccant-dehumidifiers.html'},
+            {icon:'snowflake', title:'Low Temperature Low Humidity Dehumidifiers', img:{id:'dehumidifier-card-low-temp', placeholder:'Drop the Low Temperature range photo here'}, copy:'Specialized dehumidification engineered to operate reliably in cold storage, freezers, and low-temperature environments where standard refrigerant units freeze and fail.', href:'low-temperature-dehumidifiers.html'},
+            {icon:'shield',    title:'Special Dehumidifiers',                  img:{id:'dehumidifier-card-special', placeholder:'Drop the Special Dehumidifiers range photo here'}, copy:'Purpose-engineered climate systems for the most demanding requirements, temperature-controlling, high and low-temp, thermo-drying, stable humidity, and constant temperature-humidity solutions.', href:'special-dehumidifiers.html'},
+          ],
+        },
+        {
+          title: 'Humidifiers',
+          items: [
+            {icon:'droplets', title:'Industrial Ultrasonic Humidifier', img:{id:'humidifier-card-ultrasonic', placeholder:'Drop the Ultrasonic Humidifier photo here'}, copy:'High-precision ultrasonic humidification designed for environments where consistent humidity control is essential for product quality and operational stability.', href:'industrial-ultrasonic-humidifier.html'},
+            {icon:'leaf',     title:'Industrial Wet-Film Humidifier',   img:{id:'humidifier-card-wetfilm', placeholder:'Drop the Wet-Film Humidifier photo here'}, copy:'Efficient evaporative humidification with integrated filtration and air-washing for clean, stable environmental control in critical operations.', href:'industrial-wetfilm-humidifier.html'},
+            {icon:'flask',    title:'Electrode Steam Humidifier',       img:{id:'humidifier-card-electrode', placeholder:'Drop the Electrode Steam Humidifier photo here'}, copy:'Clean, hygienic humidification that boils water with submerged electrodes to produce pure, sterile, mineral-free steam, ideal for hospitals, cleanrooms, laboratories, and pharmaceutical environments.', href:'electrode-steam-humidifier.html'},
+            {icon:'gauge',    title:'Special Humidifiers',              img:{id:'humidity-lineup-special', placeholder:'Drop the Special Humidifiers photo here'}, copy:'All-in-one constant temperature and humidity systems that hold both parameters within tight tolerances for cleanrooms, labs, server rooms, and precision manufacturing.', href:'special-humidifiers.html'},
+          ],
+        },
+      ],
+      industries: ['Healthcare','Warehousing','Cold Storage','Manufacturing','Hospitality','Construction','Pharmaceuticals','Pulp & paper','Wine & spirits','Archives'],
+    };
+    ReactDOM.createRoot(document.getElementById('root')).render(<SolutionDetail active="Solutions" {...data}/>);
+  </script>
+
+
+<script src="security.js"></script>
+</body>
+</html>
