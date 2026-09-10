@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="resilience.js"></script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src https://www.google.com https://www.youtube.com; connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://www.google-analytics.com https://formsubmit.co; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products, Klima Optima</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="stylesheet" href="styles.css">
+<!-- ko-seo-start -->
+<meta name="description" content="Three categories. Dozens of models. Every unit specified for commercial duty, demanding conditions, and the operational demands of commercial spaces…">
+<link rel="canonical" href="https://klimaoptima.com/products.html">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Klima Optima">
+<meta property="og:locale" content="en_PH">
+<meta property="og:title" content="Products, Klima Optima">
+<meta property="og:description" content="Three categories. Dozens of models. Every unit specified for commercial duty, demanding conditions, and the operational demands of commercial spaces…">
+<meta property="og:url" content="https://klimaoptima.com/products.html">
+<meta property="og:image" content="https://klimaoptima.com/assets/logos/klima-optima-wordmark.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Products, Klima Optima">
+<meta name="twitter:description" content="Three categories. Dozens of models. Every unit specified for commercial duty, demanding conditions, and the operational demands of commercial spaces…">
+<meta name="twitter:image" content="https://klimaoptima.com/assets/logos/klima-optima-wordmark.png">
+<meta name="theme-color" content="#04111F">
+<link rel="icon" type="image/png" href="assets/logos/klima-optima-monogram-snowflake.png">
+<link rel="apple-touch-icon" href="assets/logos/klima-optima-monogram-snowflake.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://klimaoptima.com/products.html","name":"Products, Klima Optima","description":"Three categories. Dozens of models. Every unit specified for commercial duty, demanding conditions, and the operational demands of commercial spaces…","inLanguage":"en-PH","isPartOf":{"@type":"WebSite","url":"https://klimaoptima.com/","name":"Klima Optima"},"publisher":{"@type":"Organization","name":"Klima Optima","url":"https://klimaoptima.com/"}}</script>
+<script type="application/ld+json" data-ko-breadcrumb-ld>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://klimaoptima.com/"},{"@type":"ListItem","position":2,"name":"Products","item":"https://klimaoptima.com/products.html"}]}</script>
+<!-- ko-seo-end -->
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+
+  <script type="text/babel" src="Icons.jsx"></script>
+  <script type="text/babel" src="Header.jsx"></script>
+  <script type="text/babel" src="Footer.jsx"></script>
+  <script type="text/babel" src="PageShell.jsx"></script>
+  <script type="text/babel" src="Products.jsx"></script>
+
+  <script type="text/babel">
+    const CATEGORIES = [
+      {
+        id: 'ac',
+        icon: 'snowflake',
+        label: 'Air Conditioners',
+        copy: 'Fast, targeted portable cooling for offices, hospitality, healthcare, events, and operational backup.',
+        models: 5,
+        coverage: 'up to 60 m²',
+        href: 'air-conditioners.html',
+      },
+      {
+        id: 'ipac',
+        icon: 'gauge',
+        label: 'Industrial And Precision Air Conditioners',
+        copy: 'Ducted mobile systems, cabinet cooling, and close-control air conditioning for facilities and mission-critical environments.',
+        models: 3,
+        coverage: 'tight tolerance',
+        href: 'industrial-precision-aircons.html',
+      },
+      {
+        id: 'dh',
+        icon: 'droplet',
+        label: 'Dehumidifiers',
+        copy: 'Control moisture, reduce mold and corrosion risk, and protect comfort in humid commercial and storage spaces.',
+        models: 4,
+        coverage: 'up to 90 L/day',
+        href: 'dehumidifiers.html',
+      },
+      {
+        id: 'hu',
+        icon: 'wind',
+        label: 'Humidifiers',
+        copy: 'Precision moisture delivery for archives, cleanrooms, healthcare, and printing environments.',
+        models: 3,
+        coverage: '30-70 % RH',
+        href: 'humidifiers.html',
+      },
+    ];
+
+    const CategoryCard = ({c}) => {
+      const [hov, setHov] = React.useState(false);
+      return (
+        <a href={c.href} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+          style={{
+            position:'relative', display:'block',
+            borderRadius: 34, padding: 40, minHeight: 420,
+            border:'1px solid ' + (hov ? 'rgba(110,216,255,0.34)' : 'rgba(110,216,255,0.12)'),
+            background: 'linear-gradient(180deg, rgba(10,35,66,0.55), rgba(6,23,40,0.85))',
+            backdropFilter:'blur(20px)',
+            boxShadow: hov ? '0 40px 110px rgba(0,0,0,0.55), 0 0 60px rgba(24,183,255,0.10)' : '0 30px 100px rgba(0,0,0,0.45)',
+            overflow:'hidden', transition:'all 260ms cubic-bezier(0.22,1,0.36,1)',
+            transform: hov ? 'translateY(-8px)' : 'none',
+            textDecoration:'none', color:'inherit',
+            display:'flex', flexDirection:'column',
+          }}>
+          <div style={{position:'absolute', top:-60, right:-60, width: 340, height: 340, background:'radial-gradient(circle, rgba(24,183,255,0.22), transparent 60%)', pointerEvents:'none', opacity: hov ? 1 : 0.7, transition:'opacity 260ms'}}/>
+          <div style={{position:'absolute', inset:0, opacity:0.07, backgroundImage:'linear-gradient(90deg, rgba(110,216,255,0.7) 1px, transparent 1px), linear-gradient(rgba(110,216,255,0.7) 1px, transparent 1px)', backgroundSize:'36px 36px', pointerEvents:'none'}}/>
+          <div style={{position:'relative', display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+            <div style={{width: 64, height: 64, borderRadius: 20, background: hov ? '#18B7FF' : 'rgba(24,183,255,0.10)', color: hov ? '#04111F' : '#6ED8FF', display:'flex', alignItems:'center', justifyContent:'center', boxShadow: hov ? '0 0 36px rgba(24,183,255,0.45)' : '0 0 24px rgba(24,183,255,0.12)', border:'1px solid rgba(110,216,255,0.20)', transition:'all 240ms'}}>
+              <Icon name={c.icon} size={32}/>
+            </div>
+            <Tag>{c.models} units · {c.coverage}</Tag>
+          </div>
+          <h3 style={{position:'relative', marginTop: 32, fontFamily:'var(--ko-font-display)', fontWeight: 900, fontSize: 30, color:'#fff', letterSpacing:'-0.015em', lineHeight: 1.1}}>{c.label}</h3>
+          <p style={{position:'relative', marginTop: 16, color:'rgba(255,255,255,0.66)', lineHeight: 1.65, fontSize: 15.5, flex: 1}}>{c.copy}</p>
+          <span style={{position:'relative', marginTop: 28, color: hov ? '#9EEBFF' : '#6ED8FF', fontFamily:'var(--ko-font-display)', fontWeight: 700, fontSize: 13.5, display:'inline-flex', alignItems:'center', gap: hov ? 14 : 10, transition:'all 240ms'}}>
+            Explore range <Icon name="arrow-right" size={15}/>
+          </span>
+        </a>
+      );
+    };
+
+    const App = () => (
+      <Page active="Products">
+        <PageHero
+          crumbs={[{label:'Home', href:'Klima Optima Homepage.html'},{label:'Products'}]}
+          eyebrow="Product Range"
+          headline="Engineered Units for"
+          headlineHighlight="Every Climate."
+          sub="Three categories. Dozens of models. Every unit specified for commercial duty, demanding conditions, and the operational demands of commercial spaces worldwide."
+          ctas={<>
+            <a href="#categories" className="ko-btn ko-btn-primary" style={{textDecoration:'none'}}>Browse Categories <Icon name="arrow-right" size={18}/></a>
+            <a href="resources.html" className="ko-btn ko-btn-secondary" style={{textDecoration:'none'}}>Download Catalog</a>
+          </>}
+        />
+
+        {/* Categories */}
+        <SectionBand shade={1} id="categories">
+          <Reveal>
+            <SectionHead align="center" eyebrow="Categories" title="Four" titleHighlight="product families." sub="Each engineered for a distinct mode of climate control, choose by what you need to hold steady."/>
+            <div style={{marginTop: 56, display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap: 22}}>
+              {CATEGORIES.map(c => <CategoryCard key={c.id} c={c}/>)}
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Existing Products section showcasing 3 detailed cards */}
+        <Reveal>
+          <ProductsSection/>
+        </Reveal>
+
+        {/* Comparison table */}
+        <SectionBand shade={2}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Comparison" title="Pick the right category" titleHighlight="for the job." />
+            <div style={{marginTop: 56, borderRadius: 30, border:'1px solid rgba(110,216,255,0.16)', background:'rgba(255,255,255,0.04)', backdropFilter:'blur(20px)', overflow:'hidden', boxShadow:'0 30px 100px rgba(0,0,0,0.4)'}}>
+              <table style={{width:'100%', borderCollapse:'collapse', color:'#fff', fontFamily:'var(--ko-font-body)', fontSize: 14.5}}>
+                <thead>
+                  <tr style={{background:'rgba(24,183,255,0.06)'}}>
+                    <th style={th}>Use case</th>
+                    <th style={th}>Air Conditioners</th>
+                    <th style={th}>Dehumidifiers</th>
+                    <th style={th}>Humidifiers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ['Lower temperature',          'yes', 'no',  'no'],
+                    ['Reduce humidity',            'side','yes', 'no'],
+                    ['Raise humidity',             'no',  'no',  'yes'],
+                    ['Portable / mobile',          'yes', 'yes', 'side'],
+                    ['Critical environment',       'side','yes', 'yes'],
+                    ['Coverage area, typical',     '20-60 m²','40-120 m²','sealed zones'],
+                    ['Typical deployment',          'event, office, hotel','warehouse, factory, basement','archive, cleanroom, lab'],
+                  ].map((row, i) => (
+                    <tr key={i} style={{borderTop:'1px solid rgba(110,216,255,0.08)'}}>
+                      <td style={{...td, fontWeight: 700, color:'rgba(255,255,255,0.86)'}}>{row[0]}</td>
+                      <td style={td}>{cell(row[1])}</td>
+                      <td style={td}>{cell(row[2])}</td>
+                      <td style={td}>{cell(row[3])}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        {/* Applications */}
+        <SectionBand shade={0}>
+          <Reveal>
+            <SectionHead align="center" eyebrow="Featured Applications" title="Where these units" titleHighlight="get deployed." />
+            <div style={{marginTop: 56, display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap: 18}}>
+              <FeatureCard icon="hospital"   title="Hospitals & wards"     copy="Stable corridor cooling and ward humidity for high-occupancy clinical floors."/>
+              <FeatureCard icon="hotel"      title="Hotels & resorts"      copy="Ballroom event cooling, guest-room dehumidification, lobby comfort backup."/>
+              <FeatureCard icon="factory"    title="Manufacturing"         copy="Process cooling, machinery moisture protection, line-side spot relief."/>
+              <FeatureCard icon="cold"       title="Cold storage"          copy="Anteroom dehumidification, condensate control at thermal interfaces."/>
+              <FeatureCard icon="warehouse"  title="Warehousing"           copy="Moisture risk reduction for stored goods, packaging integrity."/>
+              <FeatureCard icon="building"   title="Construction sites"    copy="Drying, dust mitigation, climate control during fit-out phases."/>
+              <FeatureCard icon="event"      title="Events"                 copy="Pop-up cooling for marquees, conventions, outdoor activations."/>
+              <FeatureCard icon="gauge"      title="Critical environments" copy="Server rooms, archives, labs, precision tolerances held continuously."/>
+            </div>
+          </Reveal>
+        </SectionBand>
+
+        <CTABand
+          eyebrow="Need help choosing?"
+          title="We'll size and spec the right unit for your space."
+          sub="Tell us about your operation, surface area, occupancy, tolerance, and timeline, and we'll come back with a sized proposal."
+          primary={{label:'Request Sizing', href:'contact.html'}}
+          secondary={{label:'Solutions', href:'solutions.html'}}
+        />
+      </Page>
+    );
+
+    const th = {padding:'18px 24px', textAlign:'left', fontFamily:'var(--ko-font-display)', fontWeight: 900, fontSize: 11.5, letterSpacing:'0.18em', textTransform:'uppercase', color:'#6ED8FF'};
+    const td = {padding:'18px 24px', textAlign:'left', color:'rgba(255,255,255,0.72)'};
+    const cell = (val) => {
+      if (val === 'yes')  return <span style={{display:'inline-flex', alignItems:'center', gap: 8, color:'#9EEBFF', fontWeight: 700}}><span style={{width: 8, height: 8, borderRadius:'50%', background:'#18B7FF', boxShadow:'0 0 12px #18B7FF'}}/> Primary</span>;
+      if (val === 'side') return <span style={{display:'inline-flex', alignItems:'center', gap: 8, color:'rgba(110,216,255,0.65)'}}><span style={{width: 8, height: 8, borderRadius:'50%', background:'rgba(110,216,255,0.35)'}}/> Secondary</span>;
+      if (val === 'no')   return <span style={{color:'rgba(255,255,255,0.30)'}}>, </span>;
+      return val;
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+
+
+<script src="security.js"></script>
+</body>
+</html>
